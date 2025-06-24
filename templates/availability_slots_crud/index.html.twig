@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AvailabilitySlots index{% endblock %}
+
+{% block body %}
+    <h1>AvailabilitySlots index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Start_time</th>
+                <th>End_time</th>
+                <th>Is_booked</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for availability_slot in availability_slots %}
+            <tr>
+                <td>{{ availability_slot.id }}</td>
+                <td>{{ availability_slot.date ? availability_slot.date|date('Y-m-d') : '' }}</td>
+                <td>{{ availability_slot.startTime ? availability_slot.startTime|date('H:i:s') : '' }}</td>
+                <td>{{ availability_slot.endTime ? availability_slot.endTime|date('H:i:s') : '' }}</td>
+                <td>{{ availability_slot.isBooked ? 'Yes' : 'No' }}</td>
+                <td>{{ availability_slot.createdAt ? availability_slot.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_availability_slots_crud_show', {'id': availability_slot.id}) }}">show</a>
+                    <a href="{{ path('app_availability_slots_crud_edit', {'id': availability_slot.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_availability_slots_crud_new') }}">Create new</a>
+{% endblock %}

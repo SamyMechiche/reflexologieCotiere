@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit AvailabilitySlots{% endblock %}
+
+{% block body %}
+    <h1>Edit AvailabilitySlots</h1>
+
+    {{ include('availability_slots_crud/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_availability_slots_crud_index') }}">back to list</a>
+
+    {{ include('availability_slots_crud/_delete_form.html.twig') }}
+{% endblock %}
