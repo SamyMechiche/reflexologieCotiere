@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Réflexologie Côtière{% endblock %}
 
 {% block body %}
     <section class="padding">
@@ -19,7 +19,35 @@
                 vitalité.</p>
             <a href="#" class="learn-more-btn">réserver une séance</a>
         </section>
-        <section class="slider">
+        <div class="flex">
+            <section class="introduction">
+                <h1>Qu'est-ce que la réflexologie plantaire ?</h1>
+                <p>La réflexologie repose sur le principe selon lequel tout le corps (<strong>organes, muscles,
+                        squelette,
+                        etc.</strong>) se projette dans certaines zones des pieds, mains, oreilles et visage. Formée aux
+                    <strong>quatre techniques</strong>, je me spécialise en réflexologie plantaire et auriculaire.
+                    <br><br>
+                    Par des
+                    pressions ciblées sur des <strong>zones réflexes</strong>, cette pratique traditionnelle vise à
+                    détendre,
+                    harmoniser le corps et soulager les petits maux du quotidien. Chaque zone est choisie selon l'effet
+                    recherché, stimulant ainsi <strong>l'autorégulation naturelle du corps</strong>. <br><br> Les pieds
+                    comptent
+                    environ <strong>7200 terminaisons nerveuses</strong> : leur stimulation procure un bien-être
+                    physique et
+                    émotionnel, tout en rééquilibrant <strong>les énergies du corps</strong>.
+                </p>
+            </section>
+            <section class="pictures">
+                <figure>
+                    <img src="/img/homepage/HPpictures1.png" alt="Séance réflexologie 1">
+                </figure>
+                <figure>
+                    <img src="/img/homepage/HPpictures2.png" alt="Séance réflexologie 2">
+                </figure>
+            </section>
+        </div>
+                <section class="slider">
             <div class="slides">
                 <div class="slide" style="background-image: url('/img/homepage/HPslider-img.png');">
                     <h3>Séance personnalisée</h3>
@@ -55,34 +83,6 @@
             <button class="slider-btn prev-btn">&lt;</button>
             <button class="slider-btn next-btn">&gt;</button>
         </section>
-        <div class="flex">
-            <section class="introduction">
-                <h1>Qu'est-ce que la réflexologie plantaire ?</h1>
-                <p>La réflexologie repose sur le principe selon lequel tout le corps (<strong>organes, muscles,
-                        squelette,
-                        etc.</strong>) se projette dans certaines zones des pieds, mains, oreilles et visage. Formée aux
-                    <strong>quatre techniques</strong>, je me spécialise en réflexologie plantaire et auriculaire.
-                    <br><br>
-                    Par des
-                    pressions ciblées sur des <strong>zones réflexes</strong>, cette pratique traditionnelle vise à
-                    détendre,
-                    harmoniser le corps et soulager les petits maux du quotidien. Chaque zone est choisie selon l'effet
-                    recherché, stimulant ainsi <strong>l'autorégulation naturelle du corps</strong>. <br><br> Les pieds
-                    comptent
-                    environ <strong>7200 terminaisons nerveuses</strong> : leur stimulation procure un bien-être
-                    physique et
-                    émotionnel, tout en rééquilibrant <strong>les énergies du corps</strong>.
-                </p>
-            </section>
-            <section class="pictures">
-                <figure>
-                    <img src="/img/homepage/HPpictures1.png" alt="Séance réflexologie 1">
-                </figure>
-                <figure>
-                    <img src="/img/homepage/HPpictures2.png" alt="Séance réflexologie 2">
-                </figure>
-            </section>
-        </div>
         <section class="list">
             <h1>Quels sont les bienfaits ?</h1>
             <div class="list-container">
@@ -140,21 +140,8 @@
             </figure>
         </section>
         <div class="company">
-            <h1><a href="">Découvrez la réflexologie en entreprise</a></h1>
+            <h1><a href="{{ path('company') }}">Découvrez la réflexologie en entreprise</a></h1>
         </div>
     </section>
-    <footer>
-        <p>
-            reflexologiecotiere@gmail.com<br>© 2025 par Réflexologie Côtière<br>Crée par Samy Mechiche<br>Micro
-            Entreprise Annick Brunel E.I - SIRET 98262556800018
-        </p>
-    </footer>
-    <nav class="bottom-menu">
-        <a href="#section1"><img src="/img/icones/house-solid (2).svg" class="menu-icon" alt="Accueil icon">Accueil</a>
-        <a href="#section2"><img src="/img/icones/sheet-plastic-solid.svg" class="menu-icon" alt="Réflexologie icon">La
-            réflexologie</a>
-        <a href="#section3"><img src="/img/icones/list-solid (1).svg" class="menu-icon" alt="Séances icon">Les séances</a>
-        <a href="#section4"><img src="/img/icones/user-solid (1).svg" class="menu-icon" alt="Parcours icon">Mon parcours</a>
-        <a href="#section3"><img src="/img/icones/phone-solid (1).svg" class="menu-icon" alt="Contact icon">Contact</a>
-    </nav>
+
 {% endblock %}
