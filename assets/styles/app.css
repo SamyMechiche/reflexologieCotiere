@@ -86,22 +86,6 @@
    }
    
    /* =======================
-      2. INTRODUCTION SECTION
-      ======================= */
-   .introduction {
-       text-align: justify;
-   }
-   .introduction > h1 {
-       font-family: Barlow Condensed;
-       color: #47301E;
-       margin: 1.5rem 0;
-       font-size: 2rem;
-   }
-   .introduction > p {
-       color: #0D1C17;
-   }
-   
-   /* =======================
       3. PICTURES SECTION
       ======================= */
    .pictures {
@@ -204,44 +188,6 @@
    .learn-more-btn:hover {
        background-color: #6a4a2b;
        color: #fffbe6;
-   }
-   
-   /* =======================
-      6. HOW IT WORKS SECTION
-      ======================= */
-   .how-it-works {
-       display: flex;
-       flex-direction: column;
-   }
-   .how-it-works > h1 {
-       font-family: Barlow Condensed;
-       color: #47301E;
-       margin-bottom: 1rem;
-       font-size: 2rem;
-   }
-   .how-it-works > p {
-       font-family: Poppins;
-       font-size: 1.2rem;
-       text-align: justify;
-       color: #0D1C17;
-       margin-bottom: 1rem;
-   }
-   .how-it-works > p a {
-       color: #0D1C17;
-   }
-   .how-it-works figure {
-       margin: 1.5rem 0;
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       justify-content: center;
-       width: 100%;
-   }
-   .how-it-works figure img {
-       display: block;
-       margin: 0 auto;
-       max-width: 100%;
-       height: auto;
    }
    
    /* =======================
@@ -395,11 +341,6 @@
      .hero { border-radius: 24px; padding: 2rem 4rem; }
      .hero > h1 { font-size: 2.5rem; }
      .hero > p { font-size: 1.5rem; }
-     .how-it-works { margin: 2rem auto; max-width: 900px; }
-     .how-it-works > h1 { font-size: 32px; }
-     .introduction { font-size: 1.1rem; margin: 2rem auto; max-width: 800px; }
-     .introduction > h1 { font-size: 2.5rem; }
-     .introduction > p { font-size: 1.5rem; }
      .learn-more { margin: 2rem auto; max-width: 900px; }
      .list { margin: 2rem auto; max-width: 800px; }
      .list-item { font-size: 1.1rem; padding: 1.5rem; }
@@ -419,8 +360,7 @@
      .hero > figure { width: 130px; height: 130px; }
      .hero > h1 { font-size: 3rem; } /* Fixed typo from 4°0px */
      .hero > p { font-size: 2rem; }
-     .introduction, .list, .learn-more, .how-it-works { width: 80%; margin: 1.5rem auto; }
-     .introduction { width: 40%; }
+     .list, .learn-more { width: 80%; margin: 1.5rem auto; }
      .learn-more { display: flex; flex-direction: row; align-items: center; justify-content: space-around; gap: 2rem; }
      .learn-more-btn { font-size: 1.2rem; padding: 0.7rem 1.5rem; border-radius: 12px; }
      .learn-more figure { width: 300px; height: 180px; }
@@ -448,21 +388,6 @@
    /* =======================
     ENTREPRISE PAGE STYLES
     ======================= */
-
-/* 1. WHY SECTION */
-.why {
-    margin: 1rem 0;
-}
-.why > h1 {
-    font-size: 2rem;
-    font-family: Barlow Condensed;
-    margin-bottom: 1rem;
-    color: #47301E;
-}
-.why > p {
-    font-family: Poppins;
-    color: #0D1C17;
-}
 
 /* 2. PANELS SECTION */
 .panels {
@@ -503,17 +428,6 @@
     text-align: center;
 }
 
-/* 3. HOW IT WORKS COMPANY SECTION */
-.how-it-works-company > h1 {
-    font-size: 2rem;
-    font-family: Barlow Condensed;
-    margin-bottom: 1rem;
-    color: #47301E;
-}
-.how-it-works-company > p {
-    color: #0D1C17;
-}
-
 /* 4. PHOTOS SECTION */
 .photos {
     display: flex;
@@ -528,18 +442,6 @@
     aspect-ratio: 16 / 9; /* optionnel si tu veux un format contrôlé */
 }
 
-
-/* 5. ORGANISATION SECTION */
-.organisation > h1 {
-    font-size: 2rem;
-    font-family: Barlow Condensed;
-    margin-bottom: 1rem;
-    color: #47301E;
-}
-.organisation p {
-    font-family: Poppins, sans-serif;
-    color: #0D1C17;
-}
 
 /* 6. READY SECTION */
 .ready {
@@ -580,41 +482,102 @@
 
 /* Tablet and up */
 @media (min-width: 768px) {
-    .why { max-width: 800px; margin: 2rem auto; }
-    .why > h1 { font-size: 32px; }
     .panels { display: flex; flex-direction: row; gap: 2rem; margin: 2.5rem 0; }
     .panel { min-width: 250px; max-width: 350px; padding: 2.5rem 2rem; margin: 0; }
     .panel h4 { font-size: 1.3rem; }
     .panel img { width: 56px; height: 56px; }
-    .how-it-works { font-size: 1rem; }
-    .how-it-works-company { max-width: 800px; margin: 2rem auto; }
-    .how-it-works-company > h1 { font-size: 32px; }
     .photos { gap: 2rem; margin: 2rem 0; justify-content: center; }
     .photos > img { width: 250px; height: auto; border-radius: 40px; }
-    .organisation { max-width: 800px; margin: 2rem auto; }
-    .organisation > h1 { font-size: 32px; }
     .ready { font-size: 1.2rem; margin: 2rem 0; }
     .contact { font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 12px; margin-top: 1.5rem; }
 }
 
 @media (min-width: 1024px) {
-    .why { max-width: 900px; margin: 2.5rem auto; }
-    .why > h1 { font-size: 36px; }
     .panels { gap: 3rem; margin: 3rem 0; }
     .panel { min-width: 300px; max-width: 400px; padding: 3rem 2.5rem; }
     .panel h4 { font-size: 1.4rem; }
     .panel img { width: 64px; height: 64px; }
-    .how-it-works p { font-size: 1.3rem; }
-    .how-it-works-company { max-width: 900px; margin: 2.5rem auto; }
-    .how-it-works-company > h1 { font-size: 36px; }
     .photos { gap: 3rem; margin: 2.5rem 0; justify-content: space-around; }
     .photos > img { width: 350px; height: auto; border-radius: 12px; }
-    .organisation { max-width: 900px; margin: 2.5rem auto; }
-    .organisation > h1 { font-size: 36px; }
     .ready { font-size: 3rem; margin: 2.5rem 0; }
     .contact { font-size: 1.2rem; padding: 1.2rem 3rem; border-radius: 16px; margin-top: 2rem; }
 }
 
 .center-container {
     text-align: center;
+}
+
+/* =======================
+         La rélfexologie
+    ======================= */
+    .list {
+        font-family: Poppins;
+        list-style-position: inside;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    
+    .hero-img {
+        width: 100%;
+    }
+    .hero-img > img {
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .list {
+            font-size: 1.1rem;
+        }
+        .hero-img {
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .list {
+            font-size: 1.2rem;
+        }
+        .hero-img {
+            max-width: 800px;
+        }
+    }
+
+.section-block {
+    margin: 1.5rem 0;
+}
+.section-block > h1 {
+    font-family: Barlow Condensed;
+    color: #47301E;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+.section-block > p {
+    font-family: Poppins;
+    font-size: 1rem;
+    color: #0D1C17;
+    text-align: justify;
+}
+@media (min-width: 768px) {
+    .section-block {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+    .section-block > h1 {
+        font-size: 32px;
+    }
+    .section-block > p {
+        font-size: 1.1rem;
+    }
+}
+@media (min-width: 1024px) {
+    .section-block {
+        max-width: 900px;
+    }
+    .section-block > h1 {
+        font-size: 36px;
+    }
+    .section-block > p {
+        font-size: 1.2rem;
+    }
 }

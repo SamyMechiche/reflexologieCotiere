@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReflexologyController!{% endblock %}
+
+{% block body %}
+    <section class="padding">
+            <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
+        <div class="header-row">
+            <h1 class="title">Réflexologie Côtière</h1>
+        </div>
+        <section class="header-img">
+            <figure class="hero-img">
+                <img src="/img/réflexologie/la_reflexologie.png" alt="">
+            </figure>
+        </section>
+        <section class="section-block">
+            <h1>Quels sont les bienfaits d'une séance ?</h1>
+            <p>De manière globale, la réflexologie favorise la détente et le lâcher prise, et accompagne de manière
+                naturelle l'organisme à s'autoréguler. De ce fait, elle peut notamment contribuer à:</p>
+            <ul class="list">
+                <li>La relaxation du système nerveux</li>
+                <li>Diminuer le stress et l'anxiété</li>
+                <li>Améliorer la qualité du sommeil</li>
+                <li>Diminuer des tensions musculaires</li>
+                <li>Améliorer la digestion</li>
+                <li>Renforcer le système immunitaire</li>
+                <li>Stimuler la circulation lymphatique</li>
+                <li>Soulager les maux de tête</li>
+            </ul>
+            <p>Une séance peut être contre indiquée dans les cas suivant:</p>
+            <ul class="list">
+                <li>Blessure du pied (plaies, entorses récente...)</li>
+                <li>Maladie infectieuse</li>
+                <li>Problème cardiaque antérieur à 6 mois</li>
+                <li>Chirurgie importante antérieure à 3 mois</li>
+            </ul>
+        </section>
+        <a href="#" class="contact">Réserver une séance</a>
+    </section>
+{% endblock %}
