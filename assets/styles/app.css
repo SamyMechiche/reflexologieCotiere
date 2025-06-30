@@ -410,7 +410,7 @@
    
    /* Desktop */
    @media (min-width: 1024px) {
-     .bottom-menu { justify-content: center; gap: 2rem; width: 50%; }
+     .bottom-menu { justify-content: center; gap: 2rem; width: 70%; }
      .bottom-menu a { font-size: 1.15rem; }
      .company > h1 > a { font-size: 2rem; color: #47301E; }
      .contact { font-size: 1.2rem; padding: 0.7rem 1.5rem; border-radius: 12px; }
@@ -521,10 +521,13 @@
     margin: 1rem 0;
 }
 .photos > img {
-    width: 200px;
-    height: 50%;
-    border-radius: 50px;
+    width: 130px;
+    height: auto; /* garde les proportions naturelles */
+    border-radius: 12px; /* coins arrondis mais pas ronds */
+    object-fit: cover; /* s'assure que l'image ne se déforme pas */
+    aspect-ratio: 16 / 9; /* optionnel si tu veux un format contrôlé */
 }
+
 
 /* 5. ORGANISATION SECTION */
 .organisation > h1 {
@@ -559,14 +562,10 @@
     text-decoration: none;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
     text-align: center;
 }
 .contact:hover {
-    background-color: #6a4a2b;
-    color: #fffbe6;
+    background-color: #8C6A52;
 }
 
 /* 8. MISC */
@@ -591,7 +590,7 @@
     .how-it-works-company { max-width: 800px; margin: 2rem auto; }
     .how-it-works-company > h1 { font-size: 32px; }
     .photos { gap: 2rem; margin: 2rem 0; justify-content: center; }
-    .photos > img { width: 250px; height: auto; border-radius: 60px; }
+    .photos > img { width: 250px; height: auto; border-radius: 40px; }
     .organisation { max-width: 800px; margin: 2rem auto; }
     .organisation > h1 { font-size: 32px; }
     .ready { font-size: 1.2rem; margin: 2rem 0; }
@@ -608,10 +607,14 @@
     .how-it-works p { font-size: 1.3rem; }
     .how-it-works-company { max-width: 900px; margin: 2.5rem auto; }
     .how-it-works-company > h1 { font-size: 36px; }
-    .photos { gap: 3rem; margin: 2.5rem 0; justify-content: center; }
-    .photos > img { width: 300px; height: auto; border-radius: 80px; }
+    .photos { gap: 3rem; margin: 2.5rem 0; justify-content: space-around; }
+    .photos > img { width: 350px; height: auto; border-radius: 12px; }
     .organisation { max-width: 900px; margin: 2.5rem auto; }
     .organisation > h1 { font-size: 36px; }
     .ready { font-size: 1.3rem; margin: 2.5rem 0; }
     .contact { font-size: 1.2rem; padding: 1.2rem 3rem; border-radius: 16px; margin-top: 2rem; }
+}
+
+.center-container {
+    text-align: center;
 }
