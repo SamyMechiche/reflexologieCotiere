@@ -284,7 +284,7 @@
        bottom: 2rem;
        width: 95%;
        margin: 0 auto;
-       background: linear-gradient(90deg,rgba(132, 151, 121, 1) 0%, rgb(211, 226, 202) 100%);
+       background: linear-gradient(45deg, #618578, #A8B5A2);
        color: #F4EFEA;
        display: flex;
        justify-content: space-around;
@@ -294,8 +294,9 @@
        transition: opacity 0.3s ease;
        opacity: 1;
        border-radius: 12px;
-       border: 2px solid #849779;
+       border: 1px solid #5a7a6c;
        pointer-events: auto;
+       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
    }
    .bottom-menu a {
        color: #F4EFEA;
@@ -326,8 +327,11 @@
       11. UTILITIES & MISC
       ======================= */
    .padding { background-color: #F4EFEA; padding: 2rem; }
+   .margin { margin-bottom: 1rem; }
+   .row-limit-size {width: 350px;}
+   .row-limit-size img { width: 100%; }
    .title { text-align: center; font-family: Poppins; font-size: 24px; margin-bottom: 1rem; }
-   .underline { text-decoration: underline; }
+   .underline { text-decoration: underline; color: #0D1C17;}
    .flex { display: flex; flex-direction: column; gap: 2rem; }
    
    /* =======================
@@ -351,7 +355,7 @@
    
    /* Desktop */
    @media (min-width: 1024px) {
-     .bottom-menu { justify-content: center; gap: 2rem; width: 70%; }
+     .bottom-menu { justify-content: center; gap: 2rem; width: 40%; }
      .bottom-menu a { font-size: 1.15rem; }
      .company > h1 > a { font-size: 2rem; color: #47301E; }
      .contact { font-size: 1.2rem; padding: 0.7rem 1.5rem; border-radius: 12px; }
@@ -525,22 +529,13 @@
     }
 
     @media (min-width: 768px) {
-        .list {
-            font-size: 1.1rem;
-        }
-        .hero-img {
-            width: 80%;
-            margin: 0 auto;
-        }
+        .list {font-size: 1.1rem;}
+        .hero-img {width: 80%;margin: 0 auto;}
     }
     
     @media (min-width: 1024px) {
-        .list {
-            font-size: 1.2rem;
-        }
-        .hero-img {
-            max-width: 800px;
-        }
+        .list {font-size: 1.2rem;}
+        .hero-img {max-width: 800px;}
     }
 
 .section-block {
@@ -559,25 +554,126 @@
     text-align: justify;
 }
 @media (min-width: 768px) {
-    .section-block {
-        max-width: 800px;
-        margin: 2rem auto;
-    }
-    .section-block > h1 {
-        font-size: 32px;
-    }
-    .section-block > p {
-        font-size: 1.1rem;
-    }
+    .section-block {max-width: 800px;margin: 2rem auto;}
+    .section-block > h1 {font-size: 32px;}
+    .section-block > p {font-size: 1.1rem;}
 }
 @media (min-width: 1024px) {
-    .section-block {
-        max-width: 900px;
+    .section-block {max-width: 900px;}
+    .section-block > h1 {font-size: 36px;}
+    .section-block > p {font-size: 1.2rem;}
+}
+
+/* =======================
+         LES SÉANCES
+    ======================= */
+
+    .section-block-2 {
+        text-align: center;
+        margin-bottom: 2rem;
     }
-    .section-block > h1 {
-        font-size: 36px;
+    
+    .section-block-2 > h1 {
+        font-family: Barlow Condensed;
+        font-size: 1.5rem;
+        color: #47301E;
+        background: #A8B5A2;
+        padding: 0.2em;
+        box-shadow: 0 2px 8px rgba(71,48,30,0.08);
+        display: inline-block;
     }
-    .section-block > p {
-        font-size: 1.2rem;
+    
+    .section-block-2 > p {
+        color: #0D1C17;
+        margin-top: 1rem;
     }
+    
+    .section-block-2 > ul {
+        font-family: Poppins;
+        list-style-position: inside;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    
+    /* Tablet and up */
+    @media (min-width: 768px) {
+        .section-block-2 {margin-bottom: 2.5rem;max-width: 700px;margin: 0 auto;}
+        .section-block-2 > h1 {font-size: 1.8rem;padding: 0.4em 1.2em;border-radius: 5px;}
+        .section-block-2 > p {font-size: 1.1rem; text-align: left;}
+        .section-block-2 > ul {font-size: 1.1rem; text-align: left;}
+    }
+    
+    /* Desktop */
+    @media (min-width: 1024px) {
+        .section-block-2 {margin-bottom: 5rem; max-width: 850px;}
+        .section-block-2 > h1 {font-size: 2rem;padding: 0.3em 2em;border-radius: 8px;margin-bottom: 2rem;}
+        .section-block-2 > p {font-size: 1.1rem;}
+        .section-block-2 > ul {font-size: 1.1rem;}
+    }
+
+/* =======================
+     LA RÉFLEXOLOGIE PAGE
+======================= */
+
+.reflexology-image-container .hero-img img {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.info-column {
+    background-color: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.info-column p {
+    color: #0D1C17;
+}
+
+.info-column h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem;
+    color: #47301E;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #A8B5A2;
+    display: inline-block;
+}
+
+.info-column.contraindications h2 {
+    border-bottom-color: #E8A8A8;
+}
+.info-column.contraindications p {
+    color: #0D1C17;
+}
+
+.quote-block {
+    background-color: #e8ede7;
+    border-left: 5px solid #A8B5A2;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.quote-block blockquote {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #47301E;
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .info-grid {display: grid;grid-template-columns: 1fr 1fr;gap: 2rem;}
+    .info-column {margin-top: 0;}
+    .info-column.what-to-expect {grid-column: 1 / -1; }
+}
+
+@media (min-width: 1024px) {
+    .reflexology-layout {max-width: 1200px;margin-left: auto;margin-right: auto;margin-top: 2rem;}
+    .info-grid {grid-template-columns: repeat(3, 1fr);}
+    .info-column.what-to-expect {grid-column: auto;}
+    .reflexology-content .center-container {margin-top: 2rem;}
 }

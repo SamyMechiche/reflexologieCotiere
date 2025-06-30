@@ -1,40 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReflexologyController!{% endblock %}
+{% block title %}La Réflexologie{% endblock %}
 
 {% block body %}
-    <section class="padding">
-            <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
-        <div class="header-row">
-            <h1 class="title">Réflexologie Côtière</h1>
-        </div>
-        <section class="header-img">
+<section class="padding">
+    <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
+    <div class="header-row">
+        <h1 class="title">La Réflexologie</h1>
+    </div>
+
+    <div class="reflexology-layout">
+        <div class="reflexology-image-container">
             <figure class="hero-img">
-                <img src="/img/réflexologie/la_reflexologie.png" alt="">
+                <img src="/img/réflexologie/la_reflexologie.png" alt="Image illustrant la réflexologie">
             </figure>
-        </section>
-        <section class="section-block">
-            <h1>Quels sont les bienfaits d'une séance ?</h1>
-            <p>De manière globale, la réflexologie favorise la détente et le lâcher prise, et accompagne de manière
-                naturelle l'organisme à s'autoréguler. De ce fait, elle peut notamment contribuer à:</p>
-            <ul class="list">
-                <li>La relaxation du système nerveux</li>
-                <li>Diminuer le stress et l'anxiété</li>
-                <li>Améliorer la qualité du sommeil</li>
-                <li>Diminuer des tensions musculaires</li>
-                <li>Améliorer la digestion</li>
-                <li>Renforcer le système immunitaire</li>
-                <li>Stimuler la circulation lymphatique</li>
-                <li>Soulager les maux de tête</li>
-            </ul>
-            <p>Une séance peut être contre indiquée dans les cas suivant:</p>
-            <ul class="list">
-                <li>Blessure du pied (plaies, entorses récente...)</li>
-                <li>Maladie infectieuse</li>
-                <li>Problème cardiaque antérieur à 6 mois</li>
-                <li>Chirurgie importante antérieure à 3 mois</li>
-            </ul>
-        </section>
-        <a href="#" class="contact">Réserver une séance</a>
-    </section>
+        </div>
+
+        <div class="reflexology-content">
+            <section class="section-block">
+                <h1>Quels sont les bienfaits d'une séance ?</h1>
+                <p>De manière globale, la réflexologie favorise la détente et le lâcher prise, et accompagne de manière naturelle l'organisme à s'autoréguler. De ce fait, elle peut notamment contribuer à:</p>
+            </section>
+
+            <div class="info-grid">
+                <div class="info-column benefits">
+                    <h2>Les Bienfaits</h2>
+                    <ul class="list">
+                        <li>Relaxation du système nerveux</li>
+                        <li>Diminution du stress et de l'anxiété</li>
+                        <li>Amélioration de la qualité du sommeil</li>
+                        <li>Diminution des tensions musculaires</li>
+                        <li>Amélioration de la digestion</li>
+                        <li>Renforcement du système immunitaire</li>
+                        <li>Stimulation de la circulation lymphatique</li>
+                        <li>Soulagement des maux de tête</li>
+                    </ul>
+                </div>
+
+                <div class="info-column contraindications">
+                    <h2>Contre-indications</h2>
+                    <p>Une séance peut être contre indiquée dans les cas suivant:</p>
+                    <ul class="list">
+                        <li>Blessure du pied (plaies, entorse récente...)</li>
+                        <li>Maladie infectieuse</li>
+                        <li>Problème cardiaque antérieur à 6 mois</li>
+                        <li>Chirurgie importante antérieure à 3 mois</li>
+                    </ul>
+                </div>
+
+                <div class="info-column what-to-expect">
+                    <h2>À quoi s'attendre ?</h2>
+                    <p>Une séance dure environ 1h. Nous commençons par un échange pour comprendre vos besoins, suivi par le soin de réflexologie où vous êtes confortablement installé. La séance se termine par un moment de repos pour intégrer les bienfaits.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>
+                    "La réflexologie est un voyage intérieur où chaque pression sur le pied est une porte ouverte vers le bien-être du corps et de l'esprit."
+                </blockquote>
+            </div>
+
+            <div class="center-container">
+                 <a href="#" class="contact">Réserver une séance</a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

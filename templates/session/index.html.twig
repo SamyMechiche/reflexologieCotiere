@@ -3,18 +3,53 @@
 {% block title %}Hello SessionController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/wamp64/www/reflexologieCotiere/src/Controller/SessionController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/reflexologieCotiere/templates/session/index.html.twig</code></li>
-    </ul>
-</div>
+    <section class="padding">
+        <div class="header-row">
+            <a href="{{path('app_home')}}" class="arrow">&#10229;</a>
+            <h1 class="title">Réflexologie en entreprise</h1>
+        </div>
+        <section class="section-block-2">
+            <h1>Séance personnalisée</h1>
+            <p>Chaque séance commence par un temps d’échange pour comprendre vos attentes et établir un <strong>bilan
+                réflexologique</strong> réalisé sur les bases de l’énergétique chinoise.
+                Ce bilan permet de définir un protocole sur-mesure, incluant la réflexologie plantaire et des techniques
+                complémentaires adaptées. <br><br>L'observation de vos pieds affine le protocole pour une prise en
+                charge <br><br>Techniques associées:</p>
+            <ul>
+                <li><strong>Stimulation de points spécifiques</strong> (pieds, mollets, mains, avant-bras), qui sont des points
+                    d’acupuncture (sans aiguille) via pression digitale, stylet ou chaleur (moxibustion), sans aiguille.
+                </li>
+                <li>Réflexologie auriculaire avec <strong>graines de vaccaria</strong>, posées après la séance plantaire pour prolonger
+                    les effets sur plusieurs jours.</li>
+                <li>Conseils en diététique chinoise</li>
+            </ul>
+        </section>
+        <section class="section-block-2">
+            <h1>Séance future maman</h1>
+            <p>Réalisées à partir du 4ème mois de grossesse, ces séances sont axées sur la détente, mais aussi sur les
+                petits désagréments qui accompagnent parfois la grossesse, comme les nausées, les remontées acides, les
+                difficultés de sommeil, les douleurs au dos, pour lesquels la réflexologie peut apporter une réponse.Les
+                séances peuvent également être très bénéfiques dans les semaines qui suivent votre accouchement, la
+                réflexologie peut en effet vous soutenir en douceur à la fois physiquement et émotionnellement après la
+                naissance de votre bébé.</p>
+        </section>
+        <section class="section-block-2">
+            <h1>Séance enfant (3-15ans)</h1>
+            <p>La réflexologie plantaire peut aider les enfants en cas de tensions émotionnelles et physiques, en cas
+                d'agitation, de manque de concentration, de difficultés de sommeil. Je propose des séances pour les
+                enfants de 5 à 15 ans. Merci de noter que les mineurs doivent être accompagnés par un adulte lors des
+                séances.</p>
+        </section>
+        <section class="section-block-2">
+            <h1>Séance tout petit</h1>
+            <p>Des séances spécifiques de réflexologie bébé sont proposées depuis de juin 2025 pour les enfants de 0 à 3
+                ans. Ces séances s’adaptent elles aussi à votre demande, et peuvent aider les bébés et les tout
+                jeunes enfants en cas de douleurs dues aux poussées dentaires, colique, difficultés de
+                sommeil, agitation.</p>
+        </section>
+        <section class="section-block-2">
+            <h1>Séance bien être</h1>
+            <p>La séance de votre choix (30 ou 60 minutes) est réalisée sans bilan réflexologique préalable. Je pratique en réflexologie plantaire un <strong>protocole 100% détente</strong>, qui vise à harmoniser de façon globale les différentes zones réflexes. Ces séances procurent un grand bien être émotionnel et physique, du fait du relâchement des tensions.</p>
+        </section>
+    </section>
 {% endblock %}
