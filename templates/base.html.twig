@@ -35,15 +35,28 @@
             </a>
         </nav>
 
-        <footer>
-            {% block show_footer %}
-            <p>
-                reflexologiecotiere@gmail.com<br>
-                © 2025 par Réflexologie Côtière<br>
-                Crée par Samy Mechiche<br>
-                Micro Entreprise Annick Brunel E.I - SIRET 98262556800018
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-col footer-contact">
+                    <h2 class="footer-title">Contact</h2>
+                    <a href="mailto:reflexologiecotiere@gmail.com" class="footer-link"><span class="footer-icon">&#9993;</span> reflexologiecotiere@gmail.com</a>
+                </div>
+                <div class="footer-col footer-copyright">
+                    <h2 class="footer-title">© 2025 Réflexologie Côtière</h2>
+                    <p class="footer-text">Micro Entreprise Annick Brunel E.I<br>SIRET 98262556800018</p>
+                </div>
+                <div class="footer-col footer-credits">
+                    <h2 class="footer-title">Crédits</h2>
+                    <p class="footer-text">Crédit photos : Images personnelles non libres de droit</p>
+                    <p class="footer-text">Créé par Samy Mechiche</p>
+                </div>
+            </div>
+            <p class="footer-legal">
+                Conformément à la loi, la pratique de la réflexologie ne peut être en aucun cas assimilée à des soins médicaux ou de kinésithérapie, mais à une technique de bien être par la relaxation physique et la détente libératrice de stress.<br><br>
+                Le réflexologue n'est nullement qualifié pour donner un avis médical, établir un diagnostic, ni conseiller de modifier ou de supprimer des traitements médicaux
             </p>
-            {% endblock %}
         </footer>
+
+        <button id="scrollToTopBtn" title="Remonter en haut">&#8679;</button>
     </body>
 </html>

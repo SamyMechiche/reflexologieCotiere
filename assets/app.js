@@ -49,28 +49,71 @@ function initSliderAndMenu() {
 
 let menuTimeout;
 let scrollHandler = null;
+let footerObserver = null;
 function initBottomMenuScroll() {
     const bottomMenu = document.querySelector('.bottom-menu');
+    const footer = document.querySelector('footer');
     if (!bottomMenu) return;
+    // Always start with menu visible
+    bottomMenu.classList.remove('hide');
     // Remove previous handler if any
     if (scrollHandler) {
         window.removeEventListener('scroll', scrollHandler);
     }
+    if (footerObserver) {
+        footerObserver.disconnect();
+    }
+    let footerInView = false;
+    // Hide menu when scrolling, unless footer is in view
     scrollHandler = () => {
+        if (footerInView) return;
         bottomMenu.classList.add('hide');
         clearTimeout(menuTimeout);
         menuTimeout = setTimeout(() => {
-            bottomMenu.classList.remove('hide');
+            if (!footerInView) bottomMenu.classList.remove('hide');
         }, 500);
     };
     window.addEventListener('scroll', scrollHandler);
+    // Hide menu when footer is in view
+    if (footer) {
+        footerObserver = new window.IntersectionObserver(
+            (entries) => {
+                footerInView = entries[0].isIntersecting;
+                if (footerInView) {
+                    bottomMenu.classList.add('hide');
+                } else {
+                    bottomMenu.classList.remove('hide');
+                }
+            },
+            { root: null, threshold: 0.1 }
+        );
+        footerObserver.observe(footer);
+    }
+}
+
+function initScrollToTopBtn() {
+    const btn = document.getElementById('scrollToTopBtn');
+    if (!btn) return;
+    function toggleBtn() {
+        if (window.scrollY > 200) {
+            btn.style.display = 'block';
+        } else {
+            btn.style.display = 'none';
+        }
+    }
+    btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.addEventListener('scroll', toggleBtn);
+    // Run once on load
+    toggleBtn();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     initSliderAndMenu();
     initBottomMenuScroll();
+    initScrollToTopBtn();
 });
 document.addEventListener('turbo:load', () => {
     initSliderAndMenu();
     initBottomMenuScroll();
+    initScrollToTopBtn();
 });
