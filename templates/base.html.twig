@@ -18,16 +18,16 @@
         {% block body %}{% endblock %}
 
         <nav class="bottom-menu">
-            <a href="#section1">
+            <a href="{{path('app_home')}}">
                 <img src="/img/icones/house-solid (2).svg" class="menu-icon" alt="Accueil icon">Accueil
             </a>
-            <a href="#section2">
+            <a href="{{path('app_reflexology')}}">
                 <img src="/img/icones/sheet-plastic-solid.svg" class="menu-icon" alt="Réflexologie icon">La réflexologie
             </a>
             <a href="{{path('app_session')}}">
                 <img src="/img/icones/list-solid (1).svg" class="menu-icon" alt="Séances icon">Les séances
             </a>
-            <a href="#section4">
+            <a href="{{path('app_journey')}}">
                 <img src="/img/icones/user-solid (1).svg" class="menu-icon" alt="Parcours icon">Mon parcours
             </a>
             <a href="#section3">
@@ -36,12 +36,14 @@
         </nav>
 
         <footer>
+            {% block show_footer %}
             <p>
                 reflexologiecotiere@gmail.com<br>
                 © 2025 par Réflexologie Côtière<br>
                 Crée par Samy Mechiche<br>
                 Micro Entreprise Annick Brunel E.I - SIRET 98262556800018
             </p>
+            {% endblock %}
         </footer>
     </body>
 </html>

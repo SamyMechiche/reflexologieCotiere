@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Parcours{% endblock %}
+
+{% block body %}
+    <section class="padding">
+        <div class="header-row journey-header">
+            <a href="{{path('app_home')}}" class="arrow journey-arrow" aria-label="Retour à l'accueil">&#10229;</a>
+            <h1 class="title journey-title">Mon Parcours</h1>
+        </div>
+
+        <div class="presentation journey-card">
+            <figure class="journey-avatar">
+                <img src="/img/parcours/avatar.png" alt="Portrait Annick Brunel">
+            </figure>
+            <div class="journey-info">
+                <h1 class="journey-name">Annick Brunel</h1>
+                <div class="journey-certifications">
+                    <a href="#" class="journey-badge">Certification RNCP de réflexologue</a>
+                    <a href="#" class="journey-badge">Certification Pro. FFP Cursus Diététique Chinoise</a>
+                    <a href="#" class="journey-badge">Livret d'attestation de compétences</a>
+                </div>
+            </div>
+        </div>
+        <div class="section-block journey-bio">
+            <h1>Présentation</h1>
+            <p>Pendant près de 30 ans, j'ai travaillé dans la relation d'aide, accompagnant des personnes en difficulté
+                d'insertion. Cette expérience humaine m'a profondément enrichie. <br><br>
+
+                Après avoir moi-même bénéficié d'une séance marquante, je me suis intéressée à l'équilibre énergétique
+                du corps. C'est ainsi que j'ai découvert la réflexologie, un véritable coup de cœur, d'abord par la
+                réflexologie faciale, puis dans sa globalité. <br><br>
+
+                Passionnée par le bien-être, je pratique aussi la sophrologie, la méditation et le Qi Gong. Très
+                connectée à la nature, je me ressource régulièrement en marchant en plein air. <br><br>
+
+                En 2021, j'ai décidé de me réorienter pour allier contact humain et accompagnement vers le mieux-être.
+                En 2022, j'ai suivi la formation certifiante de réflexologue à À Fleur de Peau (Lyon), aboutissant à la
+                <a href="#" class="journey-link">certification professionnelle RNCP 35140</a>. <br><br>
+
+                Depuis début 2024, je vous accueille dans une pièce dédiée à Beynost, au sein d'un lieu calme et
+                chaleureux réservé à mon activité. Je suis également <a href="#" class="journey-link">membre de l'ARRNCP</a>, l'association des réflexologues
+                certifiés RNCP.</p>
+        </div>
+    </section>
+{% endblock %}

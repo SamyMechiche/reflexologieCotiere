@@ -1,26 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Créer un compte{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+<section class="register-section">
+    <div class="register-card">
+        <h1 class="register-title">Créer un compte</h1>
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="register-alert" role="alert">{{ flash_error }}</div>
+        {% endfor %}
 
-    <h1>Register</h1>
+        {{ form_errors(registrationForm) }}
 
-    {{ form_errors(registrationForm) }}
+        {{ form_start(registrationForm, {'attr': {'class': 'register-form'}}) }}
+            <div class="register-field">{{ form_row(registrationForm.firstName) }}</div>
+            <div class="register-field">{{ form_row(registrationForm.lastName) }}</div>
+            <div class="register-field">{{ form_row(registrationForm.phoneNumber) }}</div>
+            <div class="register-field">{{ form_row(registrationForm.email) }}</div>
+            <div class="register-field">{{ form_row(registrationForm.plainPassword, { label: 'Mot de passe' }) }}</div>
+            <div class="register-field">{{ form_row(registrationForm.agreeTerms) }}</div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.phoneNumber) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="register-btns-row">
+                <button type="submit" class="register-btn-2">Créer un compte</button>
+                <a href="{{ path('app_login') }}" class="login-btn-2">Se connecter</a>
+            </div>
+        {{ form_end(registrationForm) }}
+    </div>
+</section>
 {% endblock %}
+
+{% block show_footer %}{% endblock %}
