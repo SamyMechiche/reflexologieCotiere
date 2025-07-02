@@ -20,6 +20,12 @@
             <a href="#" class="learn-more-btn">réserver une séance</a>
         </section>
         <div class="flex">
+                    <div class="quote-block">
+                <blockquote>
+                    "On dit en Asie que "quand on masse les pieds, on caresse l'âme." <br>
+Cette jolie formule exprime parfaitement le bien être qui résulte d'une séance de réflexologie"
+                </blockquote>
+            </div>
             <section class="section-block">
                 <h1>Qu'est-ce que la réflexologie plantaire ?</h1>
                 <p>La réflexologie repose sur le principe selon lequel tout le corps (<strong>organes, muscles,
@@ -123,6 +129,11 @@
                 </a>
             </figure>
         </section>
+        {% if app.user %}
+    <button id="openReviewModal" class="learn-more-btn">Envie de donner votre avis ?</button>
+{% else %}
+    <a href="{{ path('app_login') }}" class="learn-more-btn">Envie de donner votre avis ?</a>
+{% endif %}
         <section class="section-block">
             <h1>Comment ça marche ?</h1>
             <p class="margin">
@@ -146,5 +157,27 @@
             <h1><a href="{{ path('company') }}">Découvrez la réflexologie en entreprise</a></h1>
         </div>
     </section>
-
+    <div id="reviewModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" id="closeReviewModal">&times;</span>
+        <h2>Laisser un avis</h2>
+        <form id="reviewForm">
+            <label for="sessionSelect">Séance :</label>
+            <select id="sessionSelect" name="session" required>
+                <option value="">Chargement...</option>
+            </select>
+            <label>Note :</label>
+            <div id="starRating" class="star-rating">
+                {% for i in 1..5 %}
+                    <span class="star" data-value="{{ i }}">&#9734;</span>
+                {% endfor %}
+            </div>
+            <input type="hidden" name="stars" id="starsInput" required>
+            <label for="comment">Commentaire (optionnel) :</label>
+            <textarea id="comment" name="comment" rows="3"></textarea>
+            <button type="submit" class="learn-more-btn">Envoyer</button>
+        </form>
+        <div id="reviewMessage"></div>
+    </div>
+</div>
 {% endblock %}

@@ -1193,3 +1193,115 @@ button[type="submit"]:hover {
     .contact-list svg { width: 36px;height: 36px; }
     .social-media svg { width: 48px;height: 48px; }
 }
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(71,48,30,0.15); /* softer brown overlay */
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s;
+}
+
+.modal-content {
+    background: linear-gradient(120deg, #F4EFEA 80%, #fff8f2 100%);
+    border: 2px solid #A8B5A2;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(71,48,30,0.13);
+    padding: 2.5em 2em 2em 2em;
+    min-width: 340px;
+    max-width: 95vw;
+    position: relative;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #47301E;
+    animation: modalPopIn 0.25s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes modalPopIn {
+    0% { transform: scale(0.95) translateY(30px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-size: 2.2em;
+    color: #A8B5A2;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close:hover {
+    color: #47301E;
+}
+
+#reviewForm label {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #47301E;
+    font-size: 1.1rem;
+    margin-top: 1.2em;
+    margin-bottom: 0.3em;
+    display: block;
+}
+
+#reviewForm select,
+#reviewForm textarea {
+    width: 90%;
+    padding: 0.7em 1em;
+    border: 1.5px solid #A8B5A2;
+    border-radius: 8px;
+    background: #F4EFEA;
+    font-size: 1rem;
+    font-family: 'Poppins', Arial, sans-serif;
+    margin-bottom: 1em;
+    transition: border 0.2s;
+}
+#reviewForm select:focus,
+#reviewForm textarea:focus {
+    border: 1.5px solid #47301E;
+    background: #fffbe6;
+    outline: none;
+}
+
+.star-rating {
+    display: flex;
+    gap: 0.3em;
+    margin-bottom: 1em;
+}
+.star-rating .star {
+    font-size: 2.2em;
+    color: #A8B5A2;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.1s;
+}
+.star-rating .star.selected,
+.star-rating .star:hover,
+.star-rating .star:hover ~ .star {
+    color: gold;
+    transform: scale(1.15);
+}
+
+#reviewForm button[type=\"submit\"], .learn-more-btn {
+    background-color: #47301E;
+    color: #fff;
+    padding: 0.7em 1.5em;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', Arial, sans-serif;
+    margin-top: 1em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(71,48,30,0.08);
+}
+#reviewForm button[type=\"submit\"]:hover, .learn-more-btn:hover {
+    background-color: #A8B5A2;
+    color: #47301E;
+}
+
+#reviewMessage {
+    margin-top: 1em;
+    font-size: 1.1rem;
+    color: #618578;
+    text-align: center;
+    min-height: 1.5em;
+}

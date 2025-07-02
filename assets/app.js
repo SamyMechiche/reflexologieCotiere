@@ -117,3 +117,76 @@ document.addEventListener('turbo:load', () => {
     initBottomMenuScroll();
     initScrollToTopBtn();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const openBtn = document.getElementById('openReviewModal');
+    const modal = document.getElementById('reviewModal');
+    const closeBtn = document.getElementById('closeReviewModal');
+    const starEls = document.querySelectorAll('#starRating .star');
+    const starsInput = document.getElementById('starsInput');
+    let selectedStars = 0;
+
+    if (openBtn && modal) {
+        openBtn.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            fetchSessions();
+        });
+    }
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+    }
+    // Star rating logic
+    starEls.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            highlightStars(this.dataset.value);
+        });
+        star.addEventListener('mouseout', function() {
+            highlightStars(selectedStars);
+        });
+        star.addEventListener('click', function() {
+            selectedStars = this.dataset.value;
+            starsInput.value = selectedStars;
+            highlightStars(selectedStars);
+        });
+    });
+    function highlightStars(count) {
+        starEls.forEach(star => {
+            star.classList.toggle('selected', star.dataset.value <= count);
+        });
+    }
+    // Fetch sessions for dropdown (AJAX)
+    function fetchSessions() {
+        fetch('/sessions-for-review')
+            .then(res => res.json())
+            .then(data => {
+                const select = document.getElementById('sessionSelect');
+                select.innerHTML = '';
+                data.forEach(session => {
+                    const opt = document.createElement('option');
+                    opt.value = session.id;
+                    opt.textContent = session.name + ' (' + session.duration + ' min)';
+                    select.appendChild(opt);
+                });
+            });
+    }
+    // Handle form submit (AJAX)
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch('/submit-review', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('reviewMessage').textContent = data.message;
+            if (data.success) {
+                this.reset();
+                highlightStars(0);
+                selectedStars = 0;
+            }
+        });
+    });
+});
