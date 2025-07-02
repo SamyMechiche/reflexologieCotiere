@@ -7,14 +7,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Repository\SessionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 final class SessionController extends AbstractController
 {
     #[Route('/session', name: 'app_session')]
-    public function index(): Response
+    public function index(EntityManagerInterface $em): Response
     {
+        $sessions = $em->createQuery(
+            'SELECT s, r, u FROM App\\Entity\\Session s
+             LEFT JOIN s.reviews r
+             LEFT JOIN r.user u'
+        )->getResult();
         return $this->render('session/index.html.twig', [
-            'controller_name' => 'SessionController',
+            'sessions' => $sessions,
         ]);
     }
 
