@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+    <section class="padding">
+        <div class="header-row">
+        <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
+        <h1 class="title">Contact</h1>
+    </div>
+        <section class="section-block form">
+            <h1>M'écrire</h1>
+            <form action="" method="post">
+                <div class="input">
+                    <input type="text" name="name" placeholder="Nom" required>
+                </div>
+                <div class="input">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input">
+                    <input type="tel" name="phone" placeholder="Tel." required>
+                </div>
+                <div class="input">
+                    <textarea name="content" placeholder="Votre message" required></textarea>
+                </div>
+                <div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </section>
+        <section class="section-block">
+            <h1>Contact</h1>
+            <ul class="contact-list">
+                <li>
+                    <!-- Phone SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                        style="vertical-align:middle;margin-right:8px;">
+                        <path
+                            d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"
+                            fill="#333" />
+                    </svg>
+                    06 56 71 73 76
+                </li>
+                <li>
+                    <!-- Location (Ping) SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                        style="vertical-align:middle;margin-right:8px;">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"
+                            fill="#333" />
+                    </svg>
+                    266 chemin du Pont - 01700 Beynost (1er étage)
+                </li>
+                <li>
+                    <!-- Mail SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                        style="vertical-align:middle;margin-right:8px;">
+                        <path
+                            d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.29 6.71a1 1 0 001.42 0L20 10.01V20H4z"
+                            fill="#333" />
+                    </svg>
+                    reflexologiecotiere@gmail.com
+                </li>
+            </ul>
+        </section>
+        <section class="section-block social-media">
+            <h1>Me suivre sur les réseaux</h1>
+            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-instagram-icon lucide-instagram">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg></a>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook-icon lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+        </section>
+        <section class="section-block map" style="margin-top:32px;">
+            <h1>Localisation</h1>
+            <div id="map" style="height: 300px; width: 100%;">
+            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <script>
+                // Coordonnées approximatives de l'adresse
+                var map = L.map('map').setView([45.8339, 4.9997], 16);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(map);
+                L.marker([45.8339, 4.9997]).addTo(map)
+                    .bindPopup('266 chemin du Pont - 01700 Beynost')
+                    .openPopup();
+            </script>
+            </div>
+        </section>
+    </section>
+{% endblock %}
