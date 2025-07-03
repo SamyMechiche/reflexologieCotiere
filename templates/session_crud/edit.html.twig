@@ -3,11 +3,12 @@
 {% block title %}Edit Session{% endblock %}
 
 {% block body %}
-    <h1>Edit Session</h1>
-
-    {{ include('session_crud/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_session_crud_index') }}">back to list</a>
-
-    {{ include('session_crud/_delete_form.html.twig') }}
+    <div class="admin-session-edit">
+        <h1>Modifier la séance</h1>
+        {{ include('session_crud/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        <div style="text-align:center;">
+            <a href="{{ path('app_session_crud_index') }}">Retour à la liste</a>
+            {{ include('session_crud/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

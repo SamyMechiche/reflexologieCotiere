@@ -1582,3 +1582,259 @@ button[type="submit"]:hover {
     border-radius: 8px;
   }
 }
+
+.admin-session-show {
+  max-width: 540px;
+  margin: 2.5rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(97,133,120,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  font-family: Poppins, sans-serif;
+}
+.admin-session-show h1 {
+  text-align: center;
+  color: #47301E;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.admin-session-show .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background: #F4EFEA;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(97,133,120,0.06);
+}
+.admin-session-show .table th, .admin-session-show .table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 1.08rem;
+}
+.admin-session-show .table th {
+  background: #A8B5A2;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.admin-session-show .table tr:last-child th, .admin-session-show .table tr:last-child td {
+  border-bottom: none;
+}
+.admin-session-show a, .admin-session-show button {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  background: #47301E;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: Poppins, sans-serif;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.admin-session-show a:hover, .admin-session-show button:hover {
+  background-color: #6a4a2b;
+  color: #fffbe6;
+}
+@media (max-width: 600px) {
+  .admin-session-show {
+    padding: 1.2rem 0.5rem;
+  }
+  .admin-session-show .table th, .admin-session-show .table td {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.98rem;
+  }
+  .admin-session-show h1 {
+    font-size: 1.3rem;
+  }
+}
+
+.admin-session-index {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(97,133,120,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  font-family: Poppins, sans-serif;
+}
+.admin-session-index h1 {
+  text-align: center;
+  color: #47301E;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.admin-session-index .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background: #F4EFEA;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(97,133,120,0.06);
+}
+.admin-session-index .table th, .admin-session-index .table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 1.08rem;
+}
+.admin-session-index .table th {
+  background: #A8B5A2;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.admin-session-index .table tr:last-child th, .admin-session-index .table tr:last-child td {
+  border-bottom: none;
+}
+.admin-session-index .table td {
+  vertical-align: top;
+}
+.admin-session-index a, .admin-session-index button {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+  background: #47301E;
+  color: #fff;
+  padding: 0.5rem 1.1rem;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: Poppins, sans-serif;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.admin-session-index a:hover, .admin-session-index button:hover {
+  background: #6a4a2b;
+  color: #fffbe6;
+}
+@media (max-width: 700px) {
+  .admin-session-index {
+    padding: 1.2rem 0.5rem;
+  }
+  .admin-session-index .table th, .admin-session-index .table td {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.98rem;
+  }
+  .admin-session-index h1 {
+    font-size: 1.3rem;
+  }
+}
+
+.admin-session-edit {
+  max-width: 540px;
+  margin: 2.5rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(97,133,120,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  font-family: Poppins, sans-serif;
+}
+.admin-session-edit h1 {
+  text-align: center;
+  color: #47301E;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.admin-session-edit form {
+  margin-bottom: 2rem;
+}
+.admin-session-edit a, .admin-session-edit button {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  background: #47301E;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: Poppins, sans-serif;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.admin-session-edit a:hover, .admin-session-edit button:hover {
+  background: #6a4a2b;
+  color: #fffbe6;
+}
+@media (max-width: 600px) {
+  .admin-session-edit {
+    padding: 1.2rem 0.5rem;
+  }
+  .admin-session-edit h1 {
+    font-size: 1.3rem;
+  }
+}
+
+.admin-session-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.admin-session-form label {
+  font-family: Poppins, sans-serif;
+  color: #47301E;
+  font-size: 1.08rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+.admin-session-form input,
+.admin-session-form textarea,
+.admin-session-form select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #A8B5A2;
+  border-radius: 7px;
+  font-size: 1.08rem;
+  font-family: Poppins, sans-serif;
+  background: #F4EFEA;
+  margin-bottom: 0.2rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s;
+}
+.admin-session-form input:focus,
+.admin-session-form textarea:focus,
+.admin-session-form select:focus {
+  border: 1.5px solid #618578;
+  background: #fffbe6;
+}
+.admin-session-form .btn,
+.admin-session-form button[type="submit"] {
+  background: #A8B5A2;
+  color: #fff;
+  padding: 0.7rem 1.3rem;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-family: Poppins, sans-serif;
+  border: none;
+  margin-top: 0.7rem;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.admin-session-form .btn:hover,
+.admin-session-form button[type="submit"]:hover {
+  background: #47301E;
+  color: #fffbe6;
+}
+@media (max-width: 600px) {
+  .admin-session-form input,
+  .admin-session-form textarea,
+  .admin-session-form select {
+    font-size: 0.98rem;
+    padding: 0.5rem 0.7rem;
+  }
+  .admin-session-form .btn,
+  .admin-session-form button[type="submit"] {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}

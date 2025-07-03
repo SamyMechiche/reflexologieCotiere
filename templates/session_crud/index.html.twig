@@ -3,39 +3,61 @@
 {% block title %}Session index{% endblock %}
 
 {% block body %}
-    <h1>Session index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Duration_minutes</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for session in sessions %}
-            <tr>
-                <td>{{ session.id }}</td>
-                <td>{{ session.name }}</td>
-                <td>{{ session.description }}</td>
-                <td>{{ session.durationMinutes }}</td>
-                <td>{{ session.price }}</td>
-                <td>
-                    <a href="{{ path('app_session_crud_show', {'id': session.id}) }}">show</a>
-                    <a href="{{ path('app_session_crud_edit', {'id': session.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_session_crud_new') }}">Create new</a>
+    <div class="admin-session-index">
+        <h1>Liste des séances</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Durée (minutes)</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for session in sessions %}
+                <tr>
+                    <td>{{ session.id }}</td>
+                    <td>{{ session.name }}</td>
+                    <td>
+                        <span class="desc-preview">{{ session.description|slice(0, 40) }}{% if session.description|length > 40 %}...{% endif %}</span>
+                        <button type="button" class="desc-toggle-btn" data-target="desc-{{ session.id }}">Voir plus</button>
+                        <div class="desc-full" id="desc-{{ session.id }}" style="display:none; margin-top:0.5rem;">
+                            <textarea readonly style="width:100%; min-height:80px;">{{ session.description }}</textarea>
+                        </div>
+                    </td>
+                    <td>{{ session.durationMinutes }}</td>
+                    <td>{{ session.price }}</td>
+                    <td>
+                        <a href="{{ path('app_session_crud_show', {'id': session.id}) }}">Voir</a>
+                        <a href="{{ path('app_session_crud_edit', {'id': session.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div style="text-align:center;">
+            <a href="{{ path('app_session_crud_new') }}">Créer une nouvelle séance</a>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.desc-toggle-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var target = document.getElementById(btn.getAttribute('data-target'));
+                if (target.style.display === 'none' || target.style.display === '') {
+                    target.style.display = 'block';
+                } else {
+                    target.style.display = 'none';
+                }
+            });
+        });
+    });
+    </script>
 {% endblock %}
