@@ -17,6 +17,20 @@
             <p>Découvrez l'art ancestral de la réflexologie, où de douces pressions sur vos pieds ouvrent la voie à la
                 détente et au bien-être.Vivez la puissance transformative du toucher, pour retrouver équilibre et
                 vitalité.</p>
+            <div class="hero-socials" style="margin: 1.5rem 0; display: flex; gap: 1.5rem; justify-content: center;">
+                <a href="" target="_blank" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram-icon lucide-instagram">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="" target="_blank" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook-icon lucide-facebook">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+            </div>
             <a href="#" class="learn-more-btn">réserver une séance</a>
         </section>
         <div class="flex">
@@ -43,6 +57,11 @@
 Cette jolie formule exprime parfaitement le bien être qui résulte d'une séance de réflexologie"
                 </blockquote>
             </div>
+                    {% if app.user %}
+    <button id="openReviewModal" class="learn-more-btn center">Envie de donner votre avis ?</button>
+{% else %}
+    <a href="{{ path('app_login') }}" class="learn-more-btn center">Envie de donner votre avis ?</a>
+{% endif %}
             </section>
             <section class="pictures">
                 <figure>
@@ -129,11 +148,6 @@ Cette jolie formule exprime parfaitement le bien être qui résulte d'une séanc
                 </a>
             </figure>
         </section>
-        {% if app.user %}
-    <button id="openReviewModal" class="learn-more-btn">Envie de donner votre avis ?</button>
-{% else %}
-    <a href="{{ path('app_login') }}" class="learn-more-btn">Envie de donner votre avis ?</a>
-{% endif %}
         <section class="section-block">
             <h1>Comment ça marche ?</h1>
             <p class="margin">
@@ -152,6 +166,7 @@ Cette jolie formule exprime parfaitement le bien être qui résulte d'une séanc
             <figure class="row-limit-size">
                 <img src="/img/homepage/HPEspace réflexo2.png" alt="Espace réflexo 2">
             </figure>
+    <a href="{{ path('app_login') }}" class="learn-more-btn center">Réserver une séance</a>
         </section>
         <div class="company">
             <h1><a href="{{ path('company') }}">Découvrez la réflexologie en entreprise</a></h1>

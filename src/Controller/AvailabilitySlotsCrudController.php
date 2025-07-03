@@ -10,16 +10,84 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Carbon\Carbon;
 
 #[Route('/availability/slots/crud')]
 final class AvailabilitySlotsCrudController extends AbstractController
 {
     #[Route(name: 'app_availability_slots_crud_index', methods: ['GET'])]
-    public function index(AvailabilitySlotsRepository $availabilitySlotsRepository): Response
+    public function index(Request $request, AvailabilitySlotsRepository $availabilitySlotsRepository): Response
     {
+        $weekOffset = $request->query->getInt('week', 0);
+        $startOfWeek = (new Carbon())->addWeeks($weekOffset)->startOfWeek();
+        $endOfWeek = $startOfWeek->copy()->endOfWeek();
+
+        $existingSlots = $availabilitySlotsRepository->findBetweenDates($startOfWeek, $endOfWeek);
+        $slotsByDay = $this->getSlotsByDay($startOfWeek, $existingSlots);
+
         return $this->render('availability_slots_crud/index.html.twig', [
-            'availability_slots' => $availabilitySlotsRepository->findAll(),
+            'slotsByDay' => $slotsByDay,
+            'currentWeek' => $startOfWeek->format('d/m/Y') . ' - ' . $endOfWeek->format('d/m/Y'),
+            'prevWeek' => $weekOffset - 1,
+            'nextWeek' => $weekOffset + 1,
         ]);
+    }
+
+    #[Route('/add', name: 'app_availability_slots_crud_add', methods: ['POST'])]
+    public function add(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $slotTime = $request->request->get('slot');
+        $dateTime = Carbon::parse($slotTime);
+
+        $availabilitySlot = new AvailabilitySlots();
+        $availabilitySlot->setDate(\DateTime::createFromFormat('Y-m-d', $dateTime->format('Y-m-d')));
+        $availabilitySlot->setStartTime(\DateTime::createFromFormat('H:i', $dateTime->format('H:i')));
+        $availabilitySlot->setEndTime(\DateTime::createFromFormat('H:i', $dateTime->copy()->addHour()->format('H:i')));
+        $availabilitySlot->setIsBooked(false);
+        $availabilitySlot->setCreatedAt(new \DateTime());
+
+        $entityManager->persist($availabilitySlot);
+        $entityManager->flush();
+
+        $weekOffset = $request->query->getInt('week', 0);
+        return $this->redirectToRoute('app_availability_slots_crud_index', ['week' => $weekOffset]);
+    }
+
+    private function getSlotsByDay(Carbon $startOfWeek, array $existingSlots): array
+    {
+        $slotsByDay = [];
+        for ($i = 0; $i < 7; $i++) {
+            $day = $startOfWeek->copy()->addDays($i);
+            $slotsByDay[$day->format('Y-m-d')] = [
+                'dayName' => $day->format('l'),
+                'slots' => [],
+            ];
+
+            for ($hour = 8; $hour < 19; $hour++) {
+                $slotTime = $day->copy()->hour($hour)->minute(0)->second(0);
+                $isAvailable = false;
+                $slotId = null;
+
+                foreach ($existingSlots as $existingSlot) {
+                    if (
+                        $existingSlot->getDate()->format('Y-m-d') === $slotTime->format('Y-m-d') &&
+                        $existingSlot->getStartTime()->format('H:i') === $slotTime->format('H:i')
+                    ) {
+                        $isAvailable = true;
+                        $slotId = $existingSlot->getId();
+                        break;
+                    }
+                }
+
+                $slotsByDay[$day->format('Y-m-d')]['slots'][] = [
+                    'time' => $slotTime->format('H:i'),
+                    'full_datetime' => $slotTime->toDateTimeString(),
+                    'is_available' => $isAvailable,
+                    'id' => $slotId,
+                ];
+            }
+        }
+        return $slotsByDay;
     }
 
     #[Route('/new', name: 'app_availability_slots_crud_new', methods: ['GET', 'POST'])]

@@ -5,6 +5,10 @@
 
 * { margin: 0; padding: 0; }
 
+body, html {
+  font-family: 'Poppins', sans-serif;
+}
+
 /* =======================
    1. GLOBAL LAYOUT, HEADER, NAV, FOOTER
    ======================= */
@@ -692,7 +696,7 @@ footer > p { text-align: center; color: #0D1C17; }
     .learn-more { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1.5rem; }
     .learn-more-btn { font-size: 1rem; padding: 0.5rem 1.2rem; border-radius: 7px; height: auto; }
     .contact { font-size: 1rem; padding: 0.5rem 1.2rem; border-radius: 7px; height: auto; }
-    .learn-more figure { width: 120px; height: 80px; }
+    .learn-more figure { width: 250px; height: 100px; }
 }
 
 /* =======================
@@ -1355,4 +1359,193 @@ button[type="submit"]:hover {
     margin-top: 0.5em;
     display: flex;
     gap: 0.7em;
+}
+
+.download-plaquette-btn {
+    margin-bottom: 2rem;
+  display: inline-block;
+  background-color: #47301E;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 7px;
+  text-transform: uppercase;
+  font-family: Poppins;
+  font-size: 1.2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  align-self: center;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.download-plaquette-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #6a4a2b 0%, #A8B5A2 100%);
+  z-index: 0;
+  transition: none;
+}
+.download-plaquette-btn:hover::before {
+  animation: loading-bar 1s linear forwards;
+}
+.download-plaquette-btn span {
+  position: relative;
+  z-index: 1;
+}
+.download-plaquette-btn:hover {
+  color: #fffbe6;
+}
+@keyframes loading-bar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.tarifs-section {
+  background: #faf5f1;
+  border: 2px solid #A8B5A2;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin: 3rem auto 0 auto;
+  max-width: 700px;
+  box-shadow: 0 4px 16px rgba(97,133,120,0.07);
+  font-family: Poppins, sans-serif;
+}
+.tarifs-section h2 {
+  color: #47301E;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.tarifs-section h3 {
+  color: #618578;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.tarifs-section ul {
+  margin: 0 0 1rem 1.5rem;
+  padding: 0;
+  list-style: disc inside;
+  color: #0D1C17;
+  font-size: 1.1rem;
+}
+.tarifs-section p {
+  color: #0D1C17;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.tarifs-cgv-link {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+.tarifs-cgv-link h2 {
+  color: #47301E;
+  font-size: 2rem;
+  margin: 0;
+  text-decoration: underline dotted #A8B5A2 2px;
+  transition: color 0.2s;
+}
+.tarifs-cgv-link:hover h2 {
+  color: #618578;
+}
+
+.crud-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(97,133,120,0.07);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.crud-table th, .crud-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+.crud-table th {
+  background: #faf5f1;
+  color: #47301E;
+  font-weight: 600;
+  border-bottom: 2px solid #A8B5A2;
+}
+.crud-table tr:not(:last-child) td {
+  border-bottom: 1px solid #eee;
+}
+.crud-table tr:hover td {
+  background: #f4f8f6;
+}
+.crud-table td {
+  color: #222;
+  font-size: 1rem;
+}
+.crud-table a, .crud-table button {
+  background: #618578;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  margin-right: 0.3rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.crud-table a:hover, .crud-table button:hover {
+  background: #47301E;
+}
+
+.crud-form {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(97,133,120,0.07);
+  padding: 2rem 2.5rem;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+.crud-form label {
+  color: #47301E;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.crud-form input, .crud-form select, .crud-form textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #A8B5A2;
+  border-radius: 7px;
+  font-size: 1rem;
+  font-family: Poppins, sans-serif;
+  background: #F4EFEA;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s;
+}
+.crud-form input:focus, .crud-form select:focus, .crud-form textarea:focus {
+  border: 1.5px solid #618578;
+  background: #fffbe6;
+}
+.crud-form button {
+  background: #618578;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.crud-form button:hover {
+  background: #47301E;
 }

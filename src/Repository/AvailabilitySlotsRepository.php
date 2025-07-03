@@ -40,4 +40,15 @@ class AvailabilitySlotsRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findBetweenDates(\DateTimeInterface $start, \DateTimeInterface $end): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.date >= :start')
+            ->andWhere('a.date <= :end')
+            ->setParameter('start', $start->format('Y-m-d'))
+            ->setParameter('end', $end->format('Y-m-d'))
+            ->getQuery()
+            ->getResult();
+    }
 }

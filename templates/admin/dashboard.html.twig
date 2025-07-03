@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css">
+{% endblock %}
+
+{% block body %}
+<section class="admin-dashboard" style="max-width: 1200px; margin: 3rem auto; padding: 2rem; background: #faf5f1; border-radius: 16px; box-shadow: 0 4px 16px rgba(97,133,120,0.07);">
+    <h1 style="color: #47301E; margin-bottom: 1.5rem; text-align: center;">Admin Dashboard</h1>
+    
+    <div class="dashboard-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        
+        <div class="dashboard-users">
+            <h2 style="color: #618578; margin-bottom: 1rem;">Utilisateurs</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #e8e0d9;">
+                        <th style="padding: 0.5rem; text-align: left;">ID</th>
+                        <th style="padding: 0.5rem; text-align: left;">Email</th>
+                        <th style="padding: 0.5rem; text-align: left;">Nom</th>
+                        <th style="padding: 0.5rem; text-align: left;">Roles</th>
+                        <th style="padding: 0.5rem; text-align: left;">Inscrit le</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr style="border-bottom: 1px solid #e8e0d9;">
+                        <td style="padding: 0.5rem;">{{ user.id }}</td>
+                        <td style="padding: 0.5rem;">{{ user.email }}</td>
+                        <td style="padding: 0.5rem;">{{ user.firstName }} {{ user.lastName }}</td>
+                        <td style="padding: 0.5rem;">{{ user.roles|join(', ') }}</td>
+                        <td style="padding: 0.5rem;">{{ user.createdAt|date('d/m/Y') }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="padding: 0.5rem; text-align: center;">Aucun utilisateur trouvé.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="dashboard-controls">
+            <h2 style="color: #618578; margin-bottom: 1rem;">Raccourcis</h2>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="{{ path('app_availability_slots_crud_index') }}" class="btn" style="background: #47301E; color: white; padding: 0.7rem; border-radius: 7px; text-decoration: none;">Gérer les créneaux</a>
+                <a href="{{ path('app_session_crud_index') }}" class="btn" style="background: #47301E; color: white; padding: 0.7rem; border-radius: 7px; text-decoration: none;">Gérer les séances</a>
+                <a href="{{ path('app_user_crud_index') }}" class="btn" style="background: #47301E; color: white; padding: 0.7rem; border-radius: 7px; text-decoration: none;">Gérer les utilisateurs</a>
+                <a href="{{ path('app_appointment_crud_index') }}" class="btn" style="background: #47301E; color: white; padding: 0.7rem; border-radius: 7px; text-decoration: none;">Gérer les rendez-vous</a>
+                <a href="{{ path('app_review') }}" class="btn" style="background: #47301E; color: white; padding: 0.7rem; border-radius: 7px; text-decoration: none;">Gérer les avis</a>
+                <a href="{{ path('app_message') }}" class="btn" style="background: #47301E; color: white; padding: 0.7rem; border-radius: 7px; text-decoration: none;">Voir les messages</a>
+            </div>
+            
+            <div data-controller="calendar" style="margin-top: 2rem; background: white; padding: 1rem; border-radius: 8px;">
+                <h3 style="text-align:center; color:#618578;">Calendrier</h3>
+                <p style="text-align:center;">(Bientôt disponible)</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+{% endblock %} 
