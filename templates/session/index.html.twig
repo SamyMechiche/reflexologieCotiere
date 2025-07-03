@@ -3,12 +3,26 @@
 {% block title %}Les séances{% endblock %}
 
 {% block body %}
+
 <section class="padding">
+
     <div class="header-row">
         <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
         <h1 class="title">Les différentes séances</h1>
     </div>
+    <div class="banner-slider" style="width:100vw; max-width:100%; overflow:hidden; margin-bottom:2rem; position:relative; left:50%; transform:translateX(-50%);">
+        <div class="banner-slides">
+            <img src="/img/entreprise/entreprise 1.avif" alt="Entreprise 1" />
+            <img src="/img/entreprise/entreprise 1.avif" alt="Entreprise 1" />
+            <img src="/img/entreprise/entreprise 1.avif" alt="Entreprise 1" />
+            <img src="/img/entreprise/entreprise 1.avif" alt="Entreprise 1" />
+            <img src="/img/entreprise/entreprise 1.avif" alt="Entreprise 1" />
+        </div>
+    </div>
+    <section class="section-block-2">
+                        <a href="/docpdf/deontologie.pdf" class="learn-more-btn" target="_blank" style="margin-bottom: 10px; display: inline-block;">Code de déontologie</a></section>
     {% for session in sessions %}
+
         <section class="section-block-2">
             <h1>{{ session.getName() }}{% if session.getPrice() %} - {{ session.getPrice()|number_format(2, '.', ' ') }}€{% endif %}</h1>
             {# Optionally display forfaits or extra info here if you have it in the entity #}
@@ -40,6 +54,7 @@
             {% endif %}
         </section>
     {% endfor %}
+    
     <section class="session-payment-info">
         <h2 class="session-payment-title">Règlement</h2>
         <ul class="session-payment-list">

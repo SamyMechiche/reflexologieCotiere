@@ -1549,3 +1549,36 @@ button[type="submit"]:hover {
 .crud-form button:hover {
   background: #47301E;
 }
+
+.banner-slider {
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 24px rgba(97,133,120,0.10);
+  border-radius: 16px;
+}
+.banner-slides {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.banner-slides img {
+  width: 100vw;
+  height: 320px;
+  object-fit: cover;
+  flex-shrink: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .banner-slides img {
+    height: 180px;
+  }
+  .banner-slider {
+    border-radius: 8px;
+  }
+}
