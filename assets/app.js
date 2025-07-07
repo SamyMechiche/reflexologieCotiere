@@ -220,3 +220,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial position
     goToSlide(0);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const calendarEl = document.getElementById('booking-calendar');
+    if (calendarEl && window.FullCalendar) {
+        const events = JSON.parse(document.getElementById('calendar-events-data').textContent);
+        let selectedSlot = null;
+        const calendar = new window.FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: events,
+            eventClick: function(info) {
+                selectedSlot = events.find(e => e.id == info.event.id);
+                showBookingForm(selectedSlot);
+            }
+        });
+        calendar.render();
+        // If a slot was preselected (from POST), show form
+        if (window.bookingPreselectedSlotId) {
+            const preselected = events.find(e => e.id == window.bookingPreselectedSlotId);
+            if (preselected) showBookingForm(preselected);
+        }
+        function showBookingForm(slot) {
+            const formDiv = document.getElementById('booking-form-div');
+            if (!formDiv) return;
+            formDiv.style.display = 'block';
+            document.getElementById('selected-slot-date').textContent = slot.start.split('T')[0];
+            document.getElementById('selected-slot-time').textContent = slot.start.split('T')[1].slice(0,5) + ' - ' + slot.end.split('T')[1].slice(0,5);
+            document.getElementById('slotIdInput').value = slot.id;
+            window.scrollTo({ top: formDiv.offsetTop - 40, behavior: 'smooth' });
+        }
+    }
+});

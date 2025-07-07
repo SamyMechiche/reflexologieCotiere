@@ -1843,3 +1843,64 @@ button[type="submit"]:hover {
     padding: 0.5rem 1rem;
   }
 }
+
+/* Appointment Booking Page Styles */
+.appointment-wrapper {
+    max-width: 900px;
+    margin: 2em auto;
+}
+.booking-calendar {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+#booking-form-div {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 2em;
+    margin-top: 2em;
+}
+.booking-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 1em;
+    border-radius: 6px;
+    margin-bottom: 1em;
+}
+.booking-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1em;
+    border-radius: 6px;
+    margin-bottom: 1em;
+}
+.booking-form-row {
+    margin-bottom: 1em;
+}
+.booking-form-row label {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+.booking-form-row input,
+.booking-form-row select {
+    margin-right: 1em;
+    width: 180px;
+}
+.booking-form-row input[name="comment"] {
+    width: 200px;
+}
+.booking-form-row input[name="name"] {
+    width: 120px;
+}
+.booking-form-row input[name="email"] {
+    width: 180px;
+}
+.booking-form-row button {
+    min-width: 100px;
+}
+.booking-calendar-hint {
+    margin-top: 2em;
+    color: #888;
+    font-size: 0.95em;
+}

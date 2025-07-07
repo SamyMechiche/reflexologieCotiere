@@ -68,6 +68,17 @@ final class AppointmentController extends AbstractController
                 }
             }
         }
+
+        // Prepare slots for FullCalendar
+        $calendarEvents = array_map(function($slot) {
+            return [
+                'id' => $slot->getId(),
+                'title' => 'Disponible',
+                'start' => $slot->getDate()->format('Y-m-d') . 'T' . $slot->getStartTime()->format('H:i:s'),
+                'end' => $slot->getDate()->format('Y-m-d') . 'T' . $slot->getEndTime()->format('H:i:s'),
+            ];
+        }, $slots);
+
         return $this->render('appointment/index.html.twig', [
             'controller_name' => 'AppointmentController',
             'slots' => $slots,
@@ -75,6 +86,7 @@ final class AppointmentController extends AbstractController
             'success' => $success,
             'error' => $error,
             'slotId' => $slotId,
+            'calendarEvents' => json_encode($calendarEvents),
         ]);
     }
 }
