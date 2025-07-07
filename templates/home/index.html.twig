@@ -7,7 +7,14 @@
         <div class="header-row">
             <h1 class="title">Réflexologie Côtière</h1>
             <h4>Annick Brunel E.I</h4>
-            <a href="{{path('app_login')}}" class="login-btn">Connexion</a>
+            <div class="login-btns-row">
+            {% if app.user %}
+                <a href="{{ path('app_user_dashboard') }}" class="login-btn">Mon espace</a>
+                <a href="{{ path('app_logout') }}" class="login-btn">Déconnexion</a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="login-btn">Connexion</a>
+            {% endif %}
+            </div>
         </div>
         <section class="hero">
             <figure>

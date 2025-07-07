@@ -191,17 +191,26 @@ footer > p { text-align: center; color: #0D1C17; }
 }
 
 .login-btns-row {
-    display: flex;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.login-btns-row .login-btn {
+  margin: 0;
+  position: static;
+  width: auto;
+}
+@media (max-width: 600px) {
+  .login-btns-row {
     flex-direction: column;
     gap: 0.7rem;
-       width: 100%;
-    margin-top: 0.5rem;
     align-items: stretch;
+  }
 }
-@media (min-width: 480px) {
-    .login-btns-row {flex-direction: row;gap: 1rem;justify-content: center;}
-    .login-btn-2, .register-btn-2 {width: auto;margin: 0;}
-   }
    
    /* =======================
    5. REGISTRATION PAGE
