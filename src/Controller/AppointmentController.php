@@ -26,7 +26,7 @@ final class AppointmentController extends AbstractController
         $error = null;
 
         if ($request->isMethod('POST')) {
-            $slotId = $request->query->get('slotId');
+            $slotId = $request->request->get('slotId');
             $slot = $slotsRepository->find($slotId);
             if (!$slot || $slot->isBooked()) {
                 $error = "Ce créneau n'est plus disponible.";
@@ -47,6 +47,7 @@ final class AppointmentController extends AbstractController
                         } else {
                             $user = new User();
                             $user->setFirstName($name);
+                            $user->setLastName('-'); // Set default last name for guest
                             $user->setEmail($email);
                             $user->setPassword(''); // No password for guest
                             $em->persist($user);

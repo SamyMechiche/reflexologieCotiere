@@ -21,7 +21,8 @@
             <label>Date :</label> <span id="selected-slot-date">{% if slotId and slots|length %}{{ slots|filter(s => s.id == slotId)|first.date|date('d/m/Y') }}{% endif %}</span>
             <label>Heure :</label> <span id="selected-slot-time">{% if slotId and slots|length %}{{ slots|filter(s => s.id == slotId)|first.startTime|date('H:i') }} - {{ slots|filter(s => s.id == slotId)|first.endTime|date('H:i') }}{% endif %}</span>
         </div>
-        <form method="post" action="{{ path('app_appointment', {'slotId': slotId ?: 0}) }}">
+        <form method="post" action="{{ path('app_appointment') }}">
+            <input type="hidden" name="slotId" id="slotIdInput" value="{{ slotId ?: '' }}">
             <div class="booking-form-row">
                 <select name="session_id" required>
                     <option value="">Choisir une séance</option>
