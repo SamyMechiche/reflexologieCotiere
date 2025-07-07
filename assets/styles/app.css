@@ -644,6 +644,11 @@ footer > p { text-align: center; color: #0D1C17; }
 .flex { display: flex; flex-direction: column; gap: 2rem; }
 .green { background-color: #D8E8CE; }
 .orange { background-color: #FFEEE0; }
+.bois {color: #59882A;}
+.terre {color: #C79E16;}
+.eau {color: #081C6A;}
+.metal {color: #808080;}
+.feu {color: #D16363;}
 
 /* =======================
    10. MEDIA QUERIES
