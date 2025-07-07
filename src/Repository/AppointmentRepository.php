@@ -40,4 +40,15 @@ class AppointmentRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * @return Appointment[] Returns an array of all Appointment objects ordered by date
+     */
+    public function findUpcomingAppointments(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.appointment_date', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

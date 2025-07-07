@@ -54,9 +54,32 @@
                 <a href="{{ path('app_message') }}" class="btn" style="background: #47301E; color: white; padding: 0.7rem; border-radius: 7px; text-decoration: none;">Voir les messages</a>
             </div>
             
-            <div data-controller="calendar" style="margin-top: 2rem; background: white; padding: 1rem; border-radius: 8px;">
-                <h3 style="text-align:center; color:#618578;">Calendrier</h3>
-                <p style="text-align:center;">(Bientôt disponible)</p>
+            <div style="margin-top: 2rem; background: white; padding: 1rem; border-radius: 8px;">
+                <h3 style="text-align:center; color:#618578;">Prochains rendez-vous</h3>
+                <table style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: #e8e0d9;">
+                            <th style="padding: 0.5rem; text-align: left;">Date</th>
+                            <th style="padding: 0.5rem; text-align: left;">Heure</th>
+                            <th style="padding: 0.5rem; text-align: left;">Utilisateur</th>
+                            <th style="padding: 0.5rem; text-align: left;">Séance</th>
+                            <th style="padding: 0.5rem; text-align: left;">Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for appt in upcomingAppointments %}
+                        <tr style="border-bottom: 1px solid #e8e0d9;">
+                            <td style="padding: 0.5rem;">{{ appt.getAppointmentDate() ? appt.getAppointmentDate()|date('d/m/Y') : '-' }}</td>
+                            <td style="padding: 0.5rem;">{{ appt.getAppointmentDate() ? appt.getAppointmentDate()|date('H:i') : '-' }}</td>
+                            <td style="padding: 0.5rem;">{{ appt.getUser() ? (appt.getUser().getFirstName() ~ ' ' ~ appt.getUser().getLastName()) : '-' }}</td>
+                            <td style="padding: 0.5rem;">{{ appt.getSession() ? appt.getSession().getName() : '-' }}</td>
+                            <td style="padding: 0.5rem;">À venir</td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="5" style="padding: 0.5rem; text-align: center;">Aucun rendez-vous à venir.</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
         
