@@ -40,4 +40,14 @@ final class MessageController extends AbstractController
         }
         return $this->redirectToRoute('app_user_dashboard');
     }
+
+    #[Route('/admin/messages', name: 'admin_messages')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function adminIndex(EntityManagerInterface $em): Response
+    {
+        $messages = $em->getRepository(Message::class)->findBy([], ['sent_at' => 'DESC']);
+        return $this->render('message/admin_index.html.twig', [
+            'messages' => $messages,
+        ]);
+    }
 }
