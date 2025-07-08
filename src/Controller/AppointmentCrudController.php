@@ -72,6 +72,12 @@ final class AppointmentCrudController extends AbstractController
     public function delete(Request $request, Appointment $appointment, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$appointment->getId(), $request->getPayload()->getString('_token'))) {
+            $slot = $appointment->getAvailabilitySlot();
+            if ($slot) {
+                $slot->setIsBooked(false);
+                $slot->setAppointment(null); // Remove the link if needed
+                $entityManager->persist($slot);
+            }
             $entityManager->remove($appointment);
             $entityManager->flush();
         }

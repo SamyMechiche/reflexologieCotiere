@@ -9,6 +9,8 @@ use App\Repository\AppointmentRepository;
 use App\Repository\InvoiceRepository;
 use App\Repository\MessageRepository;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 final class UserController extends AbstractController
 {
@@ -60,5 +62,29 @@ final class UserController extends AbstractController
             'messages' => $messages,
             'user' => $user,
         ]);
+    }
+
+    #[Route('/user/appointment/{id}/cancel', name: 'app_user_appointment_cancel', methods: ['POST'])]
+    public function cancelAppointment(int $id, AppointmentRepository $appointmentRepository, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $user = $this->getUser();
+        $appointment = $appointmentRepository->find($id);
+        if (!$appointment || $appointment->getUser() !== $user) {
+            throw $this->createNotFoundException('Rendez-vous non trouvé.');
+        }
+        if ($this->isCsrfTokenValid('cancel'.$appointment->getId(), $request->request->get('_token'))) {
+            $slot = $appointment->getAvailabilitySlot();
+            if ($slot) {
+                $slot->setIsBooked(false);
+                $slot->setAppointment(null);
+                $entityManager->persist($slot);
+            }
+            $entityManager->remove($appointment);
+            $entityManager->flush();
+            $this->addFlash('success', 'Rendez-vous annulé avec succès.');
+        } else {
+            $this->addFlash('danger', 'Token CSRF invalide.');
+        }
+        return $this->redirectToRoute('app_user_dashboard');
     }
 }
