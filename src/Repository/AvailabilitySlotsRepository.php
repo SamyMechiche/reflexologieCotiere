@@ -41,6 +41,10 @@ class AvailabilitySlotsRepository extends ServiceEntityRepository
     //        ;
     //    }
 
+    /**
+     * Finds slots between two dates.
+     * Security: Uses parameter binding for dates to prevent SQL injection.
+     */
     public function findBetweenDates(\DateTimeInterface $start, \DateTimeInterface $end): array
     {
         return $this->createQueryBuilder('a')

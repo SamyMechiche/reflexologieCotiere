@@ -22,6 +22,7 @@ final class UserController extends AbstractController
         ]);
     }
 
+    // User dashboard: Only accessible to authenticated users
     #[Route('/user/dashboard', name: 'app_user_dashboard')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function dashboard(AppointmentRepository $appointmentRepository, InvoiceRepository $invoiceRepository, MessageRepository $messageRepository): Response
@@ -64,14 +65,17 @@ final class UserController extends AbstractController
         ]);
     }
 
+    // Appointment cancellation: Only the owner can cancel, with CSRF protection
     #[Route('/user/appointment/{id}/cancel', name: 'app_user_appointment_cancel', methods: ['POST'])]
     public function cancelAppointment(int $id, AppointmentRepository $appointmentRepository, EntityManagerInterface $entityManager, Request $request): Response
     {
         $user = $this->getUser();
         $appointment = $appointmentRepository->find($id);
+        // Security: Ensure the appointment exists and belongs to the current user
         if (!$appointment || $appointment->getUser() !== $user) {
             throw $this->createNotFoundException('Rendez-vous non trouvé.');
         }
+        // CSRF protection: Validate the token before proceeding
         if ($this->isCsrfTokenValid('cancel'.$appointment->getId(), $request->request->get('_token'))) {
             $slot = $appointment->getAvailabilitySlot();
             if ($slot) {

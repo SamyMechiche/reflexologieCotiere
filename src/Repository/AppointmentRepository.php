@@ -43,6 +43,7 @@ class AppointmentRepository extends ServiceEntityRepository
 
     /**
      * @return Appointment[] Returns an array of all Appointment objects ordered by date
+     * Security: Uses Doctrine QueryBuilder with no direct user input, and parameter binding in custom queries to prevent SQL injection.
      */
     public function findUpcomingAppointments(): array
     {

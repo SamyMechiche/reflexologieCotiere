@@ -19,6 +19,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
+                # CSRF protection: When enabled, Symfony generates a unique token for each form. This token must be submitted with the form and is validated on the server to ensure the request is genuine and not forged by a malicious site. This helps prevent Cross-Site Request Forgery (CSRF) attacks, where an attacker tricks a user into submitting unwanted actions on your site.
                 enable_csrf: true
             logout:
                 path: app_logout

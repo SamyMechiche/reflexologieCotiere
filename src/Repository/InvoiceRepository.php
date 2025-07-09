@@ -16,6 +16,7 @@ class InvoiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Invoice::class);
     }
 
+    // Security: All queries use Doctrine's QueryBuilder and parameter binding, ensuring no risk of SQL injection.
     //    /**
     //     * @return Invoice[] Returns an array of Invoice objects
     //     */

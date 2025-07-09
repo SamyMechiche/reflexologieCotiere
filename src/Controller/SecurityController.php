@@ -9,6 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    // Login route: Handles user authentication and displays login errors if any
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -24,9 +25,11 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    // Logout route: The logic is handled by Symfony's security system (firewall)
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
+        // This method is never executed. Symfony intercepts this route to log out the user securely.
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }

@@ -16,11 +16,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final class AppointmentController extends AbstractController
 {
+    // Appointment booking page: Handles both GET (show slots) and POST (book appointment)
     #[Route('/appointment', name: 'app_appointment', methods: ['GET', 'POST'])]
     public function index(AvailabilitySlotsRepository $slotsRepository, SessionRepository $sessionRepository, Request $request, EntityManagerInterface $em): Response
     {
         $slotId = $request->query->get('slotId');
+        // Query all available slots (not booked)
         $slots = $slotsRepository->findBy(['is_booked' => false], ['date' => 'ASC', 'start_time' => 'ASC']);
+        // Query all available session types
         $sessions = $sessionRepository->findAll();
         $success = false;
         $error = null;
@@ -28,6 +31,7 @@ final class AppointmentController extends AbstractController
         if ($request->isMethod('POST')) {
             $slotId = $request->request->get('slotId');
             $slot = $slotsRepository->find($slotId);
+            // Error if slot is already booked
             if (!$slot || $slot->isBooked()) {
                 $error = "Ce créneau n'est plus disponible.";
             } else {
@@ -37,6 +41,7 @@ final class AppointmentController extends AbstractController
                 if (!$session) {
                     $error = "Séance invalide.";
                 } else {
+                    // If user is logged in, use their account; otherwise, create a guest user
                     if ($this->getUser()) {
                         $user = $this->getUser();
                     } else {
@@ -54,6 +59,7 @@ final class AppointmentController extends AbstractController
                         }
                     }
                     if (!$error) {
+                        // Create and persist the new appointment
                         $appointment = new Appointment();
                         $appointment->setUser($user);
                         $appointment->setSession($session);
@@ -70,7 +76,7 @@ final class AppointmentController extends AbstractController
             }
         }
 
-        // Prepare slots for FullCalendar
+        // Prepare slots for FullCalendar (JS calendar integration)
         $calendarEvents = array_map(function($slot) {
             return [
                 'id' => $slot->getId(),

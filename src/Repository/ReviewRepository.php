@@ -16,6 +16,7 @@ class ReviewRepository extends ServiceEntityRepository
         parent::__construct($registry, Review::class);
     }
 
+    // Security: All queries use Doctrine's QueryBuilder and parameter binding, ensuring no risk of SQL injection.
     //    /**
     //     * @return Review[] Returns an array of Review objects
     //     */

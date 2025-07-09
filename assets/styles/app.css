@@ -1913,3 +1913,14 @@ button[type="submit"]:hover {
     color: #888;
     font-size: 0.95em;
 }
+
+.hero-socials a {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hero-socials a:hover {
+    transform: scale(1.1);
+    color: #007BFF;
+}

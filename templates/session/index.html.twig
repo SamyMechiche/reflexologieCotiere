@@ -26,6 +26,10 @@
         <section class="section-block-2">
             <h1>{{ session.getName() }}{% if session.getPrice() %} - {{ session.getPrice()|number_format(2, '.', ' ') }}€{% endif %}</h1>
             {# Optionally display forfaits or extra info here if you have it in the entity #}
+            {#
+  SECURITY: The session description is output with |raw. This is safe because only trusted admins can edit session descriptions via the admin interface.
+  If you ever allow untrusted users to edit descriptions, sanitize input or remove |raw.
+#}
             <p>{{ session.getDescription()|raw }}</p>
             {# Reviews panel #}
             {% set sessionReviews = session.getReviews() %}

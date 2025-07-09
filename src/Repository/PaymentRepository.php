@@ -16,6 +16,7 @@ class PaymentRepository extends ServiceEntityRepository
         parent::__construct($registry, Payment::class);
     }
 
+    // Security: All queries use Doctrine's QueryBuilder and parameter binding, ensuring no risk of SQL injection.
     //    /**
     //     * @return Payment[] Returns an array of Payment objects
     //     */

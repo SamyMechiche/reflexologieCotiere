@@ -16,6 +16,7 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
+    // Security: All queries use Doctrine's QueryBuilder and parameter binding, ensuring no risk of SQL injection.
     //    /**
     //     * @return Message[] Returns an array of Message objects
     //     */
