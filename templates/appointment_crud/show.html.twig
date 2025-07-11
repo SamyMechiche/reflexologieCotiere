@@ -3,36 +3,49 @@
 {% block title %}Appointment{% endblock %}
 
 {% block body %}
-    <h1>Appointment</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ appointment.id }}</td>
-            </tr>
-            <tr>
-                <th>Appointment_date</th>
-                <td>{{ appointment.appointmentDate ? appointment.appointmentDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Notes</th>
-                <td>{{ appointment.notes }}</td>
-            </tr>
-            <tr>
-                <th>Health_informations</th>
-                <td>{{ appointment.healthInformations }}</td>
-            </tr>
-            <tr>
-                <th>Created_at</th>
-                <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_appointment_crud_index') }}">back to list</a>
-
-    <a href="{{ path('app_appointment_crud_edit', {'id': appointment.id}) }}">edit</a>
-
-    {{ include('appointment_crud/_delete_form.html.twig') }}
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
+    <div class="admin-appointment-show">
+        <h1>Détail du rendez-vous</h1>
+        <table class="table" style="width:100%; background:#fafbfc; border-radius:10px; border-collapse: separate; border-spacing: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.03); margin-bottom:2em;">
+            <tbody>
+                <tr>
+                    <th style="padding: 0.8em;">Id</th>
+                    <td style="padding: 0.8em;">{{ appointment.id }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 0.8em;">Utilisateur</th>
+                    <td style="padding: 0.8em;">{{ appointment.user ? appointment.user.firstName : '-' }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 0.8em;">Séance</th>
+                    <td style="padding: 0.8em;">{{ appointment.session ? appointment.session.name : '-' }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 0.8em;">Date</th>
+                    <td style="padding: 0.8em;">{{ appointment.appointmentDate ? appointment.appointmentDate|date('d/m/Y H:i') : '' }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 0.8em;">Notes</th>
+                    <td style="padding: 0.8em;">{{ appointment.notes }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 0.8em;">Infos santé</th>
+                    <td style="padding: 0.8em;">{{ appointment.healthInformations }}</td>
+                </tr>
+                <tr>
+                    <th style="padding: 0.8em;">Créé le</th>
+                    <td style="padding: 0.8em;">{{ appointment.createdAt ? appointment.createdAt|date('d/m/Y H:i') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="display:flex; gap:1em; flex-wrap:wrap;">
+            <a href="{{ path('app_appointment_crud_index') }}" style="padding:0.6em 1.2em; background:#e6f0fa; color:#1a4d7a; border-radius:8px; text-decoration:none; font-weight:500;">Retour à la liste</a>
+            <a href="{{ path('app_appointment_crud_edit', {'id': appointment.id}) }}" style="padding:0.6em 1.2em; background:#f5b301; color:#fff; border-radius:8px; text-decoration:none; font-weight:500;">Modifier</a>
+        </div>
+        <div style="margin-top:1.5em;">
+            {{ include('appointment_crud/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

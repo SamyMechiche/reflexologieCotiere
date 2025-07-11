@@ -3,6 +3,9 @@
 {% block title %}Utilisateurs{% endblock %}
 
 {% block body %}
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
 <div style="max-width: 1100px; margin: 2rem auto;">
     <h1 style="color: #47301E; text-align: center; margin-bottom: 2rem;">Liste des utilisateurs</h1>
     <table class="crud-table">

@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AvailabilitySlots{% endblock %}
+{% block title %}Availability Slot{% endblock %}
 
 {% block body %}
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
+
     <h1>AvailabilitySlots</h1>
 
     <table class="table">

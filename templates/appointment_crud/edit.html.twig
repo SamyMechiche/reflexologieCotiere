@@ -3,11 +3,15 @@
 {% block title %}Edit Appointment{% endblock %}
 
 {% block body %}
-    <h1>Edit Appointment</h1>
-
-    {{ include('appointment_crud/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_appointment_crud_index') }}">back to list</a>
-
-    {{ include('appointment_crud/_delete_form.html.twig') }}
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
+    <div class="admin-appointment-edit">
+        <h1>Modifier le rendez-vous</h1>
+        {{ include('appointment_crud/_form.html.twig', {'button_label': 'Mettre à jour', 'form_class': 'admin-appointment-form'}) }}
+        <div style="text-align:center;">
+            <a href="{{ path('app_appointment_crud_index') }}">Retour à la liste</a>
+            <div style="display:inline-block;">{{ include('appointment_crud/_delete_form.html.twig') }}</div>
+        </div>
+    </div>
 {% endblock %}

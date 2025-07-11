@@ -37,4 +37,16 @@ return [
     'preact/hooks' => [
         'version' => '10.12.1',
     ],
+    '@fullcalendar/daygrid' => [
+        'version' => '6.1.18',
+    ],
+    '@fullcalendar/core/index.js' => [
+        'version' => '6.1.18',
+    ],
+    '@fullcalendar/core/internal.js' => [
+        'version' => '6.1.18',
+    ],
+    '@fullcalendar/core/preact.js' => [
+        'version' => '6.1.18',
+    ],
 ];

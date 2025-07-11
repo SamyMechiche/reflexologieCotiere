@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit AvailabilitySlots{% endblock %}
+{% block title %}Edit Availability Slot{% endblock %}
 
 {% block body %}
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
     <h1>Edit AvailabilitySlots</h1>
 
     {{ include('availability_slots_crud/_form.html.twig', {'button_label': 'Update'}) }}

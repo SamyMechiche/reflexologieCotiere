@@ -1924,3 +1924,245 @@ button[type="submit"]:hover {
     transform: scale(1.1);
     color: #007BFF;
 }
+
+/* Appointment CRUD Edit Page Styles */
+.admin-appointment-edit {
+  max-width: 700px;
+  margin: 2em auto;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  border-radius: 14px;
+  padding: 2.5em;
+}
+.admin-appointment-edit h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+.admin-appointment-edit form {
+  margin-bottom: 1.5em;
+}
+.admin-appointment-edit a, .admin-appointment-edit button {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.6em 1.2em;
+  background: #e6f0fa;
+  color: #1a4d7a;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1em;
+}
+.admin-appointment-edit a.primary, .admin-appointment-edit button.primary {
+  background: #f5b301;
+  color: #fff;
+}
+.admin-appointment-edit a:hover, .admin-appointment-edit button:hover {
+  background: #cbe3fa;
+  color: #0d2c4a;
+}
+.admin-appointment-edit a.primary:hover, .admin-appointment-edit button.primary:hover {
+  background: #e0a800;
+  color: #fff;
+}
+.admin-appointment-form {
+  background: #f7fafd;
+  border-radius: 10px;
+  padding: 2em 1.5em;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  margin-bottom: 1em;
+}
+.admin-appointment-form label {
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: block;
+}
+.admin-appointment-form input,
+.admin-appointment-form select,
+.admin-appointment-form textarea {
+  width: 100%;
+  padding: 0.7em 1em;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 1.1em;
+  margin-bottom: 1.2em;
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s;
+}
+.admin-appointment-form input:focus,
+.admin-appointment-form select:focus,
+.admin-appointment-form textarea:focus {
+  border: 1.5px solid #1a4d7a;
+  background: #f0f4f8;
+}
+.admin-appointment-form .btn {
+  padding: 0.7em 2em;
+  background: #1a4d7a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 0.5em;
+  transition: background 0.2s, color 0.2s;
+}
+.admin-appointment-form .btn:hover {
+  background: #f5b301;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .admin-appointment-edit {
+    padding: 1em;
+  }
+  .admin-appointment-form {
+    padding: 1em 0.5em;
+  }
+}
+
+.admin-crud-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 2em auto 0 auto;
+  max-width: 1100px;
+}
+.dashboard-back-btn {
+  background: #1a4d7a;
+  color: #fff;
+  padding: 0.6em 1.5em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+}
+.dashboard-back-btn:hover {
+  background: #f5b301;
+  color: #fff;
+}
+
+.review-filter-btn {
+  padding: 0.4em 1.2em;
+  background: #e6f0fa;
+  color: #1a4d7a;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
+  margin-right: 0.2em;
+}
+.review-filter-btn:hover {
+  background: #f5b301;
+  color: #fff;
+}
+.review-filter-btn.active {
+  background: #1a4d7a;
+  color: #fff;
+}
+
+/* Review Page Styling - matches site palette */
+.admin-reviews-panel {
+  max-width: 1100px;
+  margin: 2em auto;
+  background: #F4EFEA;
+  box-shadow: 0 2px 8px rgba(97,133,120,0.07);
+  border-radius: 14px;
+  padding: 2.5em;
+}
+.admin-reviews-panel h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+  color: #47301E;
+  text-align: left;
+}
+.review-filter-bar {
+  margin-bottom: 2em;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.review-filter-bar span {
+  font-weight: 500;
+  color: #47301E;
+}
+.review-filter-btn {
+  padding: 0.4em 1.2em;
+  background: #A8B5A2;
+  color: #47301E;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
+  margin-right: 0.2em;
+  border: none;
+}
+.review-filter-btn:hover {
+  background: #618578;
+  color: #fffbe6;
+}
+.review-filter-btn.active {
+  background: #47301E;
+  color: #fffbe6;
+}
+.admin-reviews-panel table {
+  width: 100%;
+  background: #fffbe6;
+  border-radius: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0 1px 4px rgba(97,133,120,0.03);
+}
+.admin-reviews-panel th, .admin-reviews-panel td {
+  padding: 0.8em;
+  color: #47301E;
+}
+.admin-reviews-panel thead tr {
+  background: #A8B5A2;
+}
+.admin-reviews-panel tbody tr {
+  background: #fff;
+  transition: background 0.2s;
+}
+.admin-reviews-panel tbody tr:nth-child(even) {
+  background: #F4EFEA;
+}
+.admin-reviews-panel tbody tr:hover {
+  background: #A8B5A2;
+  color: #fffbe6;
+}
+.admin-reviews-panel .flash-success {
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 7px;
+  background: #D8E8CE;
+  color: #59882A;
+}
+.admin-reviews-panel .flash-danger {
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 7px;
+  background: #ffeaea;
+  color: #a94442;
+}
+.admin-reviews-panel button[type="submit"] {
+  background: none;
+  border: none;
+  color: #a94442;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.admin-reviews-panel button[type="submit"]:hover {
+  color: #47301E;
+}

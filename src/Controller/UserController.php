@@ -11,6 +11,8 @@ use App\Repository\MessageRepository;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\ReviewRepository;
+use App\Repository\SessionRepository;
 
 final class UserController extends AbstractController
 {
@@ -25,7 +27,7 @@ final class UserController extends AbstractController
     // User dashboard: Only accessible to authenticated users
     #[Route('/user/dashboard', name: 'app_user_dashboard')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function dashboard(AppointmentRepository $appointmentRepository, InvoiceRepository $invoiceRepository, MessageRepository $messageRepository): Response
+    public function dashboard(AppointmentRepository $appointmentRepository, InvoiceRepository $invoiceRepository, MessageRepository $messageRepository, ReviewRepository $reviewRepository, SessionRepository $sessionRepository, Request $request): Response
     {
         $user = $this->getUser();
         // Fetch all appointments for the user
@@ -55,6 +57,16 @@ final class UserController extends AbstractController
             ];
         }, $upcomingAppointments);
 
+        // Fetch all sessions for filter dropdown
+        $sessions = $sessionRepository->findAll();
+        // Get filter values from query parameters
+        $filterSessionId = $request->query->get('filter_session');
+        $filterRating = $request->query->get('filter_rating');
+        $filterSession = $filterSessionId ? $sessionRepository->find($filterSessionId) : null;
+        $filterRatingInt = $filterRating ? (int)$filterRating : null;
+        // Fetch reviews with filters
+        $reviews = $reviewRepository->findByUserWithFilters($user, $filterSession, $filterRatingInt);
+
         return $this->render('user/dashboard.html.twig', [
             'pastAppointments' => $pastAppointments,
             'upcomingAppointments' => $upcomingAppointments,
@@ -62,6 +74,10 @@ final class UserController extends AbstractController
             'invoices' => $invoices,
             'messages' => $messages,
             'user' => $user,
+            'reviews' => $reviews,
+            'sessions' => $sessions,
+            'filterSessionId' => $filterSessionId,
+            'filterRating' => $filterRating,
         ]);
     }
 

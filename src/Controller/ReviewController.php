@@ -10,14 +10,73 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Review;
 use App\Entity\Session;
+use App\Repository\ReviewRepository;
 
 final class ReviewController extends AbstractController
 {
-    #[Route('/review', name: 'app_review')]
-    public function index(): Response
+    #[Route('/admin/review', name: 'app_review')]
+    public function index(ReviewRepository $reviewRepository): Response
     {
+        $reviews = $reviewRepository->findAll();
         return $this->render('review/index.html.twig', [
-            'controller_name' => 'ReviewController',
+            'reviews' => $reviews,
+        ]);
+    }
+
+    #[Route('/admin/review/{id}/delete', name: 'admin_review_delete', methods: ['POST'])]
+    public function deleteReview(int $id, ReviewRepository $reviewRepository, EntityManagerInterface $em, Request $request): Response
+    {
+        $review = $reviewRepository->find($id);
+        if (!$review) {
+            $this->addFlash('danger', 'Avis non trouvé.');
+            return $this->redirectToRoute('app_review');
+        }
+        if ($this->isCsrfTokenValid('delete_review_' . $review->getId(), $request->request->get('_token'))) {
+            $em->remove($review);
+            $em->flush();
+            $this->addFlash('success', 'Avis supprimé avec succès.');
+        } else {
+            $this->addFlash('danger', 'Token CSRF invalide.');
+        }
+        return $this->redirectToRoute('app_review');
+    }
+
+    #[Route('/review', name: 'public_review', methods: ['GET'])]
+    public function publicIndex(ReviewRepository $reviewRepository, Request $request): Response
+    {
+        $sort = $request->query->get('sort', 'date_new');
+        switch ($sort) {
+            case 'alpha':
+                $reviews = $reviewRepository->createQueryBuilder('r')
+                    ->leftJoin('r.user', 'u')
+                    ->orderBy('u.firstName', 'ASC')
+                    ->getQuery()->getResult();
+                break;
+            case 'rating_high':
+                $reviews = $reviewRepository->createQueryBuilder('r')
+                    ->orderBy('r.rating', 'DESC')
+                    ->getQuery()->getResult();
+                break;
+            case 'rating_low':
+                $reviews = $reviewRepository->createQueryBuilder('r')
+                    ->orderBy('r.rating', 'ASC')
+                    ->getQuery()->getResult();
+                break;
+            case 'date_old':
+                $reviews = $reviewRepository->createQueryBuilder('r')
+                    ->orderBy('r.created_at', 'ASC')
+                    ->getQuery()->getResult();
+                break;
+            case 'date_new':
+            default:
+                $reviews = $reviewRepository->createQueryBuilder('r')
+                    ->orderBy('r.created_at', 'DESC')
+                    ->getQuery()->getResult();
+                break;
+        }
+        return $this->render('review/index.html.twig', [
+            'reviews' => $reviews,
+            'sort' => $sort,
         ]);
     }
 

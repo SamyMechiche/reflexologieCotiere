@@ -41,4 +41,30 @@ class ReviewRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    /**
+     * Find reviews by user, with optional session and rating filters.
+     *
+     * @param User $user
+     * @param Session|null $session
+     * @param int|null $rating
+     * @return Review[]
+     */
+    public function findByUserWithFilters($user, $session = null, $rating = null): array
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->andWhere('r.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('r.created_at', 'DESC');
+
+        if ($session) {
+            $qb->andWhere('r.session = :session')
+               ->setParameter('session', $session);
+        }
+        if ($rating) {
+            $qb->andWhere('r.rating = :rating')
+               ->setParameter('rating', $rating);
+        }
+        return $qb->getQuery()->getResult();
+    }
 }

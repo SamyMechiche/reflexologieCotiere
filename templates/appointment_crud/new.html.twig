@@ -3,9 +3,12 @@
 {% block title %}New Appointment{% endblock %}
 
 {% block body %}
-    <h1>Create new Appointment</h1>
-
-    {{ include('appointment_crud/_form.html.twig') }}
-
-    <a href="{{ path('app_appointment_crud_index') }}">back to list</a>
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
+    <div style="max-width: 700px; margin: 2em auto; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-radius: 14px; padding: 2.5em;">
+        <h1 style="font-size: 2em; font-weight: 700; margin-bottom: 1.5em;">Créer un nouveau rendez-vous</h1>
+        {{ include('appointment_crud/_form.html.twig') }}
+        <a href="{{ path('app_appointment_crud_index') }}" style="display:inline-block; margin-top:1.5em; padding:0.6em 1.2em; background:#e6f0fa; color:#1a4d7a; border-radius:8px; text-decoration:none; font-weight:500;">Retour à la liste</a>
+    </div>
 {% endblock %}

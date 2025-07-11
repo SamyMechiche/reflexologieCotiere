@@ -3,6 +3,9 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
     <h1>Create new User</h1>
 
     {{ include('user_crud/_form.html.twig') }}

@@ -3,39 +3,46 @@
 {% block title %}Appointment index{% endblock %}
 
 {% block body %}
-    <h1>Appointment index</h1>
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
+    <div style="max-width: 1100px; margin: 2em auto; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-radius: 14px; padding: 2.5em;">
+        <h1 style="font-size: 2em; font-weight: 700; margin-bottom: 1.5em;">Liste des rendez-vous</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Appointment_date</th>
-                <th>Notes</th>
-                <th>Health_informations</th>
-                <th>Created_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for appointment in appointments %}
-            <tr>
-                <td>{{ appointment.id }}</td>
-                <td>{{ appointment.appointmentDate ? appointment.appointmentDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ appointment.notes }}</td>
-                <td>{{ appointment.healthInformations }}</td>
-                <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_appointment_crud_show', {'id': appointment.id}) }}">show</a>
-                    <a href="{{ path('app_appointment_crud_edit', {'id': appointment.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table" style="width:100%; background:#fafbfc; border-radius:10px; border-collapse: separate; border-spacing: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.03);">
+            <thead>
+                <tr style="background:#f0f4f8;">
+                    <th style="padding: 0.8em; border-top-left-radius:10px;">Id</th>
+                    <th style="padding: 0.8em;">Date</th>
+                    <th style="padding: 0.8em;">Notes</th>
+                    <th style="padding: 0.8em;">Infos santé</th>
+                    <th style="padding: 0.8em;">Créé le</th>
+                    <th style="padding: 0.8em; border-top-right-radius:10px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for appointment in appointments %}
+                <tr style="background: {{ loop.index is odd ? '#fff' : '#f7fafd' }}; transition: background 0.2s;" onmouseover="this.style.background='#e6f0fa'" onmouseout="this.style.background='{{ loop.index is odd ? '#fff' : '#f7fafd' }}'">
+                    <td style="padding: 0.8em;">{{ appointment.id }}</td>
+                    <td style="padding: 0.8em;">{{ appointment.appointmentDate ? appointment.appointmentDate|date('d/m/Y H:i') : '' }}</td>
+                    <td style="padding: 0.8em;">{{ appointment.notes }}</td>
+                    <td style="padding: 0.8em;">{{ appointment.healthInformations }}</td>
+                    <td style="padding: 0.8em;">{{ appointment.createdAt ? appointment.createdAt|date('d/m/Y H:i') : '' }}</td>
+                    <td style="padding: 0.8em;">
+                        <a href="{{ path('app_appointment_crud_show', {'id': appointment.id}) }}" style="margin-right:0.5em; padding:0.4em 1em; background:#e6f0fa; color:#1a4d7a; border-radius:6px; text-decoration:none; font-weight:500;">Voir</a>
+                        <a href="{{ path('app_appointment_crud_edit', {'id': appointment.id}) }}" style="padding:0.4em 1em; background:#f5b301; color:#fff; border-radius:6px; text-decoration:none; font-weight:500;">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align:center; color:#888; font-style:italic;">Aucun rendez-vous trouvé.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_appointment_crud_new') }}">Create new</a>
+        <div style="margin-top:2em;">
+            <a href="{{ path('app_appointment_crud_new') }}" style="padding:0.7em 1.5em; background:#1a4d7a; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:1.1em;">+ Nouveau rendez-vous</a>
+        </div>
+    </div>
 {% endblock %}

@@ -1,20 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReviewController!{% endblock %}
+{% block title %}Tous les avis{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/wamp64/www/reflexologieCotiere/src/Controller/ReviewController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/reflexologieCotiere/templates/review/index.html.twig</code></li>
-    </ul>
+<div class="admin-reviews-panel">
+        <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
+    <h1>Tous les avis</h1>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+    <div class="review-filter-bar">
+        <span>Trier par :</span>
+        <a href="{{ path('public_review', {'sort': 'alpha'}) }}" class="review-filter-btn{% if sort == 'alpha' %} active{% endif %}">Alphabétique</a>
+        <a href="{{ path('public_review', {'sort': 'rating_high'}) }}" class="review-filter-btn{% if sort == 'rating_high' %} active{% endif %}">Note la plus haute</a>
+        <a href="{{ path('public_review', {'sort': 'rating_low'}) }}" class="review-filter-btn{% if sort == 'rating_low' %} active{% endif %}">Note la plus basse</a>
+        <a href="{{ path('public_review', {'sort': 'date_new'}) }}" class="review-filter-btn{% if sort == 'date_new' %} active{% endif %}">Plus récent</a>
+        <a href="{{ path('public_review', {'sort': 'date_old'}) }}" class="review-filter-btn{% if sort == 'date_old' %} active{% endif %}">Plus ancien</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Séance</th>
+                <th>Note</th>
+                <th>Commentaire</th>
+                <th>Date</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                <th>Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review.user ? review.user.firstName : '-' }}</td>
+                <td>{{ review.session ? review.session.name : '-' }}</td>
+                <td>
+                    {% for i in 1..5 %}
+                        {% if i <= review.rating %}
+                            <span style="color: #f5b301; font-size:1.2em;">&#9733;</span>
+                        {% else %}
+                            <span style="color: #e0e0e0; font-size:1.2em;">&#9733;</span>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ review.comment }}</td>
+                <td>{{ review.createdAt ? review.createdAt|date('d/m/Y H:i') : '-' }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
+                <td>
+                    <form method="post" action="{{ path('admin_review_delete', {'id': review.id}) }}" style="display:inline;" onsubmit="return confirm('Supprimer cet avis ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete_review_' ~ review.id) }}">
+                        <button type="submit" title="Supprimer">🗑️</button>
+                    </form>
+                </td>
+                {% endif %}
+            </tr>
+        {% else %}
+            <tr><td colspan="6" style="text-align:center; color:#888; font-style:italic;">Aucun avis trouvé.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

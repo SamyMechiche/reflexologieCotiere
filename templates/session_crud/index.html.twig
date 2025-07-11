@@ -3,6 +3,9 @@
 {% block title %}Session index{% endblock %}
 
 {% block body %}
+    <div class="admin-crud-header">
+        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+    </div>
     <div class="admin-session-index">
         <h1>Liste des séances</h1>
         <table class="table">
