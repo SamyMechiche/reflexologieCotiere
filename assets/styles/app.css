@@ -1589,16 +1589,11 @@ button[type="submit"]:hover {
 }
 
 @media (max-width: 600px) {
-  .banner-slides img {
-    height: 180px;
-  }
-  .banner-slider {
-    border-radius: 8px;
-  }
+  .banner-slides img { height: 180px; }
+  .banner-slider { border-radius: 8px; }
 }
 
 .admin-session-show {
-  max-width: 540px;
   margin: 2.5rem auto;
   background: #fff;
   border-radius: 18px;
@@ -1731,14 +1726,56 @@ button[type="submit"]:hover {
 }
 @media (max-width: 700px) {
   .admin-session-index {
-    padding: 1.2rem 0.5rem;
+    padding: 0.5em 0.2em;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
-  .admin-session-index .table th, .admin-session-index .table td {
-    padding: 0.7rem 0.5rem;
-    font-size: 0.98rem;
+  .admin-session-index .table {
+    display: block ;
+    width: 100% ;
+    overflow-x: auto ;
+    font-size: 0.97em ;
+    border-radius: 0 ;
+  }
+  .admin-session-index thead {
+    display: none ;
+  }
+  .admin-session-index tr {
+    display: block ;
+    margin-bottom: 1em ;
+    border-bottom: 1px solid #e8e0d9 ;
+    background: #fffbe6 ;
+  }
+  .admin-session-index td {
+    display: block ;
+    width: 100% ;
+    box-sizing: border-box ;
+    padding: 0.5em 0.7em ;
+    text-align: left ;
+    min-width: 120px ;
+    word-break: break-word ;
+    position: relative ;
+  }
+  .admin-session-index td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2em;
+    color: #618578;
+    font-size: 0.95em;
   }
   .admin-session-index h1 {
-    font-size: 1.3rem;
+    font-size: 1.2em ;
+    margin-bottom: 1em ;
+    text-align: center ;
+  }
+  .desc-toggle-btn {
+    font-size: 0.95em ;
+    padding: 0.3em 0.7em ;
+  }
+  .desc-full textarea {
+    font-size: 0.95em ;
+    min-height: 60px ;
   }
 }
 
@@ -2165,4 +2202,390 @@ button[type="submit"]:hover {
 }
 .admin-reviews-panel button[type="submit"]:hover {
   color: #47301E;
+}
+
+@media (max-width: 600px) {
+  .admin-reviews-panel {
+    padding: 1em 0.2em;
+    max-width: 100vw;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+  .admin-reviews-panel h1 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .review-filter-bar {
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: flex-start;
+    font-size: 0.95em;
+  }
+  .admin-reviews-panel table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 0;
+    font-size: 0.95em;
+  }
+  .admin-reviews-panel thead,
+  .admin-reviews-panel tbody,
+  .admin-reviews-panel th,
+  .admin-reviews-panel td,
+  .admin-reviews-panel tr {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .admin-reviews-panel thead {
+    display: none;
+  }
+  .admin-reviews-panel tr {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #A8B5A2;
+    background: #fffbe6;
+  }
+  .admin-reviews-panel td {
+    padding: 0.5em 0.7em;
+    text-align: left;
+    position: relative;
+    min-width: 120px;
+    word-break: break-word;
+  }
+  .admin-reviews-panel td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2em;
+    color: #618578;
+    font-size: 0.95em;
+  }
+  .admin-reviews-panel .flash-success,
+  .admin-reviews-panel .flash-danger {
+    font-size: 0.95em;
+    padding: 0.7em;
+  }
+
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .dashboard-users, .dashboard-controls {
+    width: 100%;
+    min-width: 0;
+  }
+  .dashboard-users h2, .dashboard-controls h2 {
+    font-size: 1.1em;
+    margin-bottom: 0.7em;
+    text-align: center;
+  }
+  .dashboard-controls > div {
+    gap: 0.7rem;
+  }
+  .dashboard-controls .btn {
+    font-size: 0.98em;
+    padding: 0.6rem;
+  }
+  .admin-dashboard h1 {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .dashboard-users table, .dashboard-controls table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 0.97em;
+    border-radius: 0;
+  }
+  .dashboard-users thead, .dashboard-controls thead {
+    display: none;
+  }
+  .dashboard-users tr, .dashboard-controls tr {
+    display: block;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #e8e0d9;
+    background: #fffbe6;
+  }
+  .dashboard-users td, .dashboard-controls td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em 0.7em;
+    text-align: left;
+    min-width: 120px;
+    word-break: break-word;
+    position: relative;
+  }
+  .dashboard-users td:before, .dashboard-controls td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2em;
+    color: #618578;
+    font-size: 0.95em;
+  }
+  .calendar-grid, .availability-calendar-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.3rem;
+    width: 100%;
+    min-width: 0;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .calendar-grid > div, .availability-calendar-grid > div {
+    min-width: 120px;
+    flex: 0 0 120px;
+    box-sizing: border-box;
+    padding: 0.3rem;
+    margin: 0;
+  }
+  .calendar-grid h3, .availability-calendar-grid h3 {
+    font-size: 1em;
+    margin-bottom: 0.2em;
+  }
+  .calendar-grid p, .availability-calendar-grid p {
+    font-size: 0.85em;
+    margin-bottom: 0.2em;
+  }
+  .calendar-grid button, .availability-calendar-grid button {
+    font-size: 0.95em;
+    padding: 0.5rem;
+    min-width: 0;
+  }
+  .calendar-grid form, .availability-calendar-grid form {
+    margin-bottom: 0.2rem;
+  }
+  .calendar-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  .calendar-nav .btn {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.7rem;
+  }
+  .admin-session-index {
+    padding: 0.5em 0.2em;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .admin-session-index .table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 0.97em;
+    border-radius: 0;
+  }
+  .admin-session-index thead {
+    display: none;
+  }
+  .admin-session-index tr {
+    display: block;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #e8e0d9;
+    background: #fffbe6;
+  }
+  .admin-session-index td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em 0.7em;
+    text-align: left;
+    min-width: 120px;
+    word-break: break-word;
+    position: relative;
+  }
+  .admin-session-index td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2em;
+    color: #618578;
+    font-size: 0.95em;
+  }
+  .admin-session-index h1 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .desc-toggle-btn {
+    font-size: 0.95em;
+    padding: 0.3em 0.7em;
+  }
+  .desc-full textarea {
+    font-size: 0.95em;
+    min-height: 60px;
+  }
+  .crud-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 0.97em;
+    border-radius: 0;
+  }
+  .crud-table thead {
+    display: none;
+  }
+  .crud-table tr {
+    display: block;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #e8e0d9;
+    background: #fffbe6;
+  }
+  .crud-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em 0.7em;
+    text-align: left;
+    min-width: 120px;
+    word-break: break-word;
+    position: relative;
+  }
+  .crud-table td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2em;
+    color: #618578;
+    font-size: 0.95em;
+  }
+  .admin-crud-header {
+    padding: 0.5em 0.2em;
+  }
+  h1 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .btn {
+    font-size: 0.98em;
+    padding: 0.6rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .user-crud-details {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    border-radius: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+    font-size: 0.97em;
+    background: #fffbe6;
+    box-shadow: none;
+  }
+  .user-crud-details tr {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e8e0d9;
+    margin-bottom: 0.5em;
+    background: #fffbe6;
+  }
+  .user-crud-details th {
+    display: block;
+    font-weight: bold;
+    color: #618578;
+    font-size: 1em;
+    padding: 0.5em 0.7em;
+    background: none;
+    border: none;
+  }
+  .user-crud-details td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5em 0.7em;
+    text-align: left;
+    min-width: 0;
+    word-break: break-word;
+    border: none;
+  }
+  .user-crud-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    margin-top: 1.2em;
+    align-items: stretch;
+  }
+  .user-crud-actions a, .user-crud-actions form button {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.7em;
+    border-radius: 7px;
+    margin-bottom: 0.3em;
+    text-align: center;
+  }
+}
+
+.user-crud-details {
+  width: 100%;
+  max-width: 500px;
+  margin: 2em auto 1.5em auto;
+  background: #fffbe6;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(97,133,120,0.07);
+  overflow: hidden;
+  font-size: 1.05em;
+}
+.user-crud-details th, .user-crud-details td {
+  padding: 1em 1.2em;
+  border-bottom: 1px solid #e8e0d9;
+}
+.user-crud-details th {
+  background: #A8B5A2;
+  color: #47301E;
+  font-weight: 600;
+  width: 40%;
+}
+.user-crud-details tr:last-child th, .user-crud-details tr:last-child td {
+  border-bottom: none;
+}
+.user-crud-header {
+  text-align: center;
+  color: #47301E;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+}
+.user-crud-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+.user-crud-actions a, .user-crud-actions form button {
+  background: #618578;
+  color: #fff;
+  border-radius: 7px;
+  padding: 0.7em 1.5em;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.user-crud-actions a:hover, .user-crud-actions form button:hover {
+  background: #47301E;
+  color: #fffbe6;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .dashboard-users, .dashboard-controls {
+    width: 100%;
+    min-width: 0;
+  }
 }

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Carbon\Carbon;
 
-#[Route('/availability/slots/crud')]
+#[Route('/admin/availability/slots/crud')]
 final class AvailabilitySlotsCrudController extends AbstractController
 {
     #[Route(name: 'app_availability_slots_crud_index', methods: ['GET'])]

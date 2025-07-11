@@ -35,9 +35,9 @@
         <tbody>
         {% for review in reviews %}
             <tr>
-                <td>{{ review.user ? review.user.firstName : '-' }}</td>
-                <td>{{ review.session ? review.session.name : '-' }}</td>
-                <td>
+                <td data-label="Utilisateur">{{ review.user ? review.user.firstName : '-' }}</td>
+                <td data-label="Séance">{{ review.session ? review.session.name : '-' }}</td>
+                <td data-label="Note">
                     {% for i in 1..5 %}
                         {% if i <= review.rating %}
                             <span style="color: #f5b301; font-size:1.2em;">&#9733;</span>
@@ -46,10 +46,10 @@
                         {% endif %}
                     {% endfor %}
                 </td>
-                <td>{{ review.comment }}</td>
-                <td>{{ review.createdAt ? review.createdAt|date('d/m/Y H:i') : '-' }}</td>
+                <td data-label="Commentaire">{{ review.comment }}</td>
+                <td data-label="Date">{{ review.createdAt ? review.createdAt|date('d/m/Y H:i') : '-' }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
-                <td>
+                <td data-label="Action">
                     <form method="post" action="{{ path('admin_review_delete', {'id': review.id}) }}" style="display:inline;" onsubmit="return confirm('Supprimer cet avis ?');">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete_review_' ~ review.id) }}">
                         <button type="submit" title="Supprimer">🗑️</button>

@@ -22,18 +22,18 @@
             <tbody>
             {% for session in sessions %}
                 <tr>
-                    <td>{{ session.id }}</td>
-                    <td>{{ session.name }}</td>
-                    <td>
+                    <td data-label="Id">{{ session.id }}</td>
+                    <td data-label="Nom">{{ session.name }}</td>
+                    <td data-label="Description">
                         <span class="desc-preview">{{ session.description|slice(0, 40) }}{% if session.description|length > 40 %}...{% endif %}</span>
                         <button type="button" class="desc-toggle-btn" data-target="desc-{{ session.id }}">Voir plus</button>
                         <div class="desc-full" id="desc-{{ session.id }}" style="display:none; margin-top:0.5rem;">
                             <textarea readonly style="width:100%; min-height:80px;">{{ session.description }}</textarea>
                         </div>
                     </td>
-                    <td>{{ session.durationMinutes }}</td>
-                    <td>{{ session.price }}</td>
-                    <td>
+                    <td data-label="Durée (minutes)">{{ session.durationMinutes }}</td>
+                    <td data-label="Prix">{{ session.price }}</td>
+                    <td data-label="Actions">
                         <a href="{{ path('app_session_crud_show', {'id': session.id}) }}">Voir</a>
                         <a href="{{ path('app_session_crud_edit', {'id': session.id}) }}">Modifier</a>
                     </td>

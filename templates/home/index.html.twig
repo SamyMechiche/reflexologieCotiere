@@ -8,12 +8,12 @@
             <h1 class="title">Réflexologie Côtière</h1>
             <h4>Annick Brunel E.I</h4>
             <div class="login-btns-row">
-            {% if app.user %}
-                <a href="{{ path('app_user_dashboard') }}" class="login-btn">Mon espace</a>
-                <a href="{{ path('app_logout') }}" class="login-btn">Déconnexion</a>
-            {% else %}
-                <a href="{{ path('app_login') }}" class="login-btn">Connexion</a>
-            {% endif %}
+                {% if app.user %}
+                    <a href="{{ path('app_user_dashboard') }}" class="login-btn">Mon espace</a>
+                    <a href="{{ path('app_logout') }}" class="login-btn">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="login-btn">Connexion</a>
+                {% endif %}
             </div>
         </div>
         <section class="hero">
@@ -21,9 +21,11 @@
                 <img src="/img/homepage/HPlogo-removebg-preview 1.png" alt="Logo Réflexologie Côtière">
             </figure>
             <h1>Faites un pas vers le bien-être </h1>
-            <p>Découvrez l'art ancestral de la réflexologie, où de douces pressions sur vos pieds ouvrent la voie à la
+            <p>
+                Découvrez l'art ancestral de la réflexologie, où de douces pressions sur vos pieds ouvrent la voie à la
                 détente et au bien-être.Vivez la puissance transformative du toucher, pour retrouver équilibre et
-                vitalité.</p>
+                vitalité.
+            </p>
             <div class="hero-socials" style="margin: 1.5rem 0; display: flex; gap: 1.5rem; justify-content: center;">
                 <a href="https://www.instagram.com/reflexologie.cotiere/" target="_blank" aria-label="Instagram">
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram-icon lucide-instagram">
@@ -38,37 +40,34 @@
                     </svg>
                 </a>
             </div>
-            <a href="{{path('app_appointment')}}" class="learn-more-btn">réserver une séance</a>
+            <a href="{{ path('app_appointment') }}" class="learn-more-btn">réserver une séance</a>
         </section>
         <div class="flex">
             <section class="section-block">
                 <h1>Qu'est-ce que la réflexologie plantaire ?</h1>
-                <p>La réflexologie repose sur le principe selon lequel tout le corps (<strong>organes, muscles,
-                        squelette,
-                        etc.</strong>) se projette dans certaines zones des pieds, mains, oreilles et visage. Formée aux
-                    <strong>quatre techniques</strong>, je me spécialise en réflexologie plantaire et auriculaire.
+                <p>
+                    La réflexologie repose sur le principe selon lequel tout le corps (<strong>organes, muscles,
+                    squelette, etc.</strong>) se projette dans certaines zones des pieds, mains, oreilles et visage.
+                    Formée aux <strong>quatre techniques</strong>, je me spécialise en réflexologie plantaire et auriculaire.
                     <br><br>
-                    Par des
-                    pressions ciblées sur des <strong>zones réflexes</strong>, cette pratique traditionnelle vise à
-                    détendre,
-                    harmoniser le corps et soulager les petits maux du quotidien. Chaque zone est choisie selon l'effet
-                    recherché, stimulant ainsi <strong>l'autorégulation naturelle du corps</strong>. <br><br> Les pieds
-                    comptent
-                    environ <strong>7200 terminaisons nerveuses</strong> : leur stimulation procure un bien-être
-                    physique et
-                    émotionnel, tout en rééquilibrant <strong>les énergies du corps</strong>.
+                    Par des pressions ciblées sur des <strong>zones réflexes</strong>, cette pratique traditionnelle vise à
+                    détendre, harmoniser le corps et soulager les petits maux du quotidien. Chaque zone est choisie selon l'effet
+                    recherché, stimulant ainsi <strong>l'autorégulation naturelle du corps</strong>.
+                    <br><br>
+                    Les pieds comptent environ <strong>7200 terminaisons nerveuses</strong> : leur stimulation procure un bien-être
+                    physique et émotionnel, tout en rééquilibrant <strong>les énergies du corps</strong>.
                 </p>
-                                    <div class="quote-block">
-                <blockquote>
-                    "On dit en Asie que "quand on masse les pieds, on caresse l'âme." <br>
-Cette jolie formule exprime parfaitement le bien être qui résulte d'une séance de réflexologie"
-                </blockquote>
-            </div>
-                    {% if app.user %}
-    <button id="openReviewModal" class="learn-more-btn center">Envie de donner votre avis ?</button>
-{% else %}
-    <a href="{{ path('app_login') }}" class="learn-more-btn center">Envie de donner votre avis ?</a>
-{% endif %}
+                <div class="quote-block">
+                    <blockquote>
+                        "On dit en Asie que "quand on masse les pieds, on caresse l'âme." <br>
+                        Cette jolie formule exprime parfaitement le bien être qui résulte d'une séance de réflexologie"
+                    </blockquote>
+                </div>
+                {% if app.user %}
+                    <button id="openReviewModal" class="learn-more-btn center">Envie de donner votre avis ?</button>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="learn-more-btn center">Envie de donner votre avis ?</a>
+                {% endif %}
             </section>
             <section class="pictures">
                 <figure>
@@ -82,43 +81,43 @@ Cette jolie formule exprime parfaitement le bien être qui résulte d'une séanc
                 </figure>
             </section>
         </div>
-                <section class="slider">
+        <section class="slider">
             <div class="slides">
-                <div class="slide" style="background-image: url('/img/homepage/HPslider-img.png');">
+                <div class="slide" style="background-image: url('/img/illus_vrac/Pratique%20plantaire%20-%202025%2007%2011%20-%2003.JPG');">
                     <h3>Séance <br>bien être</h3>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Un moment suspendu</p>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Corps et mental s'apaisent</p>
-                    <a href="{{path('app_session')}}" class="learn-more-btn">Découvrir</a>
+                    <a href="{{ path('app_session') }}" class="learn-more-btn">Découvrir</a>
                 </div>
-                <div class="slide" style="background-image: url('/img/homepage/HPslider-img.png');">
+                <div class="slide" style="background-image: url('/img/illus_vrac/Pratique%20plantaire%20-%202025%2007%2011%20-%2011.JPG');">
                     <h3>Séance <br>personnalisée</h3>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Pratiques issues de la tradition chinoise</p>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Une séance qui répond à vos attentes</p>
-                    <a href="{{path('app_session')}}" class="learn-more-btn">Découvrir</a>
+                    <a href="{{ path('app_session') }}" class="learn-more-btn">Découvrir</a>
                 </div>
-                <div class="slide" style="background-image: url('/img/homepage/HPslider-img.png');">
+                <div class="slide" style="background-image: url('/img/illus_vrac/Pratique%20plantaire%20-%202025%2007%2011%20-%2005.JPG');">
                     <h3>Forfait <br>5 saisons</h3>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Équilibrer votre énergie au fil des saisons chinoises</p>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Accompagner votre organisme</p>
-                    <a href="{{path('app_session')}}" class="learn-more-btn">Découvrir</a>
+                    <a href="{{ path('app_session') }}" class="learn-more-btn">Découvrir</a>
                 </div>
-                <div class="slide" style="background-image: url('/img/homepage/HPslider-img.png');">
+                <div class="slide" style="background-image: url('/img/illus_vrac/A%20-%20Pratique%20plantaire%20-%202025%2007%2011%20-%2017.jpg');">
                     <h3>Séance <br>future maman</h3>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Accompagner en douceur votre grossesse</p>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Détendre et soulager les inconforts</p>
-                    <a href="{{path('app_session')}}" class="learn-more-btn">Découvrir</a>
+                    <a href="{{ path('app_session') }}" class="learn-more-btn">Découvrir</a>
                 </div>
-                <div class="slide" style="background-image: url('/img/homepage/HPslider-img.png');">
+                <div class="slide" style="background-image: url('/img/illus_vrac/A%20-%20Pratique%20plantaire%20-%202025%2007%2011%20-%2045.jpg');">
                     <h3>Séance enfant <br>(3-15ans)</h3>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Accompagner l'enfant dans son évolution</p>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">La réflexologie, une alliée précieuse</p>
-                    <a href="{{path('app_session')}}" class="learn-more-btn">Découvrir</a>
+                    <a href="{{ path('app_session') }}" class="learn-more-btn">Découvrir</a>
                 </div>
-                <div class="slide" style="background-image: url('/img/homepage/HPslider-img.png');">
+                <div class="slide" style="background-image: url('/img/illus_vrac/A%20-%20Pratique%20plantaire%20-%202025%2007%2011%20-%2019.jpg');">
                     <h3>Séance <br>tout petit</h3>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Un temps de détente pour votre enfant</p>
                     <p><img src="/img/icones/check-solid.svg" alt="check icon">Un moment unique dédié à son bien être</p>
-                    <a href="{{path('app_session')}}" class="learn-more-btn">Découvrir</a>
+                    <a href="{{ path('app_session') }}" class="learn-more-btn">Découvrir</a>
                 </div>
             </div>
             <button class="slider-btn prev-btn">&lt;</button>
@@ -154,7 +153,7 @@ Cette jolie formule exprime parfaitement le bien être qui résulte d'une séanc
             </div>
         </section>
         <section class="learn-more">
-            <a href="{{path('app_reflexology')}}" class="learn-more-btn">en savoir plus</a>
+            <a href="{{ path('app_reflexology') }}" class="learn-more-btn">en savoir plus</a>
             <figure>
                 <a href="https://www.reflexologues-rncp.com/presentation-de-association-des-reflexologues-rncp/">
                     <img src="/img/homepage/rncp.png" alt="ARRNCP logo">
@@ -179,33 +178,33 @@ Cette jolie formule exprime parfaitement le bien être qui résulte d'une séanc
             <figure class="row-limit-size">
                 <img src="/img/homepage/HPEspace réflexo2.png" alt="Espace réflexo 2">
             </figure>
-    <a href="{{path('app_appointment')}}" class="learn-more-btn center">Réserver une séance</a>
+            <a href="{{ path('app_appointment') }}" class="learn-more-btn center">Réserver une séance</a>
         </section>
         <div class="company">
             <h1><a href="{{ path('company') }}">Découvrez la réflexologie en entreprise</a></h1>
         </div>
     </section>
     <div id="reviewModal" class="modal" style="display:none;">
-    <div class="modal-content">
-        <span class="close" id="closeReviewModal">&times;</span>
-        <h2>Laisser un avis</h2>
-        <form id="reviewForm">
-            <label for="sessionSelect">Séance :</label>
-            <select id="sessionSelect" name="session" required>
-                <option value="">Chargement...</option>
-            </select>
-            <label>Note :</label>
-            <div id="starRating" class="star-rating">
-                {% for i in 1..5 %}
-                    <span class="star" data-value="{{ i }}">&#9734;</span>
-                {% endfor %}
-            </div>
-            <input type="hidden" name="stars" id="starsInput" required>
-            <label for="comment">Commentaire (optionnel) :</label>
-            <textarea id="comment" name="comment" rows="3"></textarea>
-            <button type="submit" class="learn-more-btn">Envoyer</button>
-        </form>
-        <div id="reviewMessage"></div>
+        <div class="modal-content">
+            <span class="close" id="closeReviewModal">&times;</span>
+            <h2>Laisser un avis</h2>
+            <form id="reviewForm">
+                <label for="sessionSelect">Séance :</label>
+                <select id="sessionSelect" name="session" required>
+                    <option value="">Chargement...</option>
+                </select>
+                <label>Note :</label>
+                <div id="starRating" class="star-rating">
+                    {% for i in 1..5 %}
+                        <span class="star" data-value="{{ i }}">&#9734;</span>
+                    {% endfor %}
+                </div>
+                <input type="hidden" name="stars" id="starsInput" required>
+                <label for="comment">Commentaire (optionnel) :</label>
+                <textarea id="comment" name="comment" rows="3"></textarea>
+                <button type="submit" class="learn-more-btn">Envoyer</button>
+            </form>
+            <div id="reviewMessage"></div>
+        </div>
     </div>
-</div>
 {% endblock %}

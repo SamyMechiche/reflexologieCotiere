@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/appointment/crud')]
+#[Route('/admin/appointment/crud')]
 final class AppointmentCrudController extends AbstractController
 {
     #[Route(name: 'app_appointment_crud_index', methods: ['GET'])]

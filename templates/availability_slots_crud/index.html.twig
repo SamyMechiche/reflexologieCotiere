@@ -9,13 +9,13 @@
 <div style="max-width: 1200px; margin: 2rem auto; font-family: sans-serif;">
     <h1 style="text-align: center; color: #47301E;">Gérer les créneaux</h1>
 
-    <div style="display: flex; justify-content: space-between; align-items: center; margin: 1.5rem 0;">
+    <div class="calendar-nav" style="display: flex; justify-content: space-between; align-items: center; margin: 1.5rem 0;">
         <a href="{{ path('app_availability_slots_crud_index', {week: prevWeek}) }}" class="btn" style="text-decoration: none; background: #618578; color: white; padding: 0.5rem 1rem; border-radius: 7px;">&larr; Semaine précédente</a>
         <h2 style="color: #618578;">{{ currentWeek }}</h2>
         <a href="{{ path('app_availability_slots_crud_index', {week: nextWeek}) }}" class="btn" style="text-decoration: none; background: #618578; color: white; padding: 0.5rem 1rem; border-radius: 7px;">Semaine suivante &rarr;</a>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; text-align: center;">
+    <div class="calendar-grid" >
         {% for date, dayData in slotsByDay %}
             <div style="background: #e8e0d9; padding: 0.5rem; border-radius: 7px;">
                 <h3 style="margin: 0; color: #47301E;">{{ dayData.dayName|trans }}</h3>

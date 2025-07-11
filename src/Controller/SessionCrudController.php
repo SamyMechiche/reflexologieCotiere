@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 // SECURITY: Only trusted admins should have access to this controller, as session descriptions are output raw in the frontend. If access is ever broadened, sanitize input or remove |raw in the template.
-#[Route('/session/crud')]
+#[Route('/admin/session/crud')]
 final class SessionCrudController extends AbstractController
 {
     #[Route(name: 'app_session_crud_index', methods: ['GET'])]

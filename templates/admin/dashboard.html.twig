@@ -11,7 +11,7 @@
 <section class="admin-dashboard" style="max-width: 1200px; margin: 3rem auto; padding: 2rem; background: #faf5f1; border-radius: 16px; box-shadow: 0 4px 16px rgba(97,133,120,0.07);">
     <h1 style="color: #47301E; margin-bottom: 1.5rem; text-align: center;">Admin Dashboard</h1>
     
-    <div class="dashboard-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+    <div class="dashboard-grid">
         
         <div class="dashboard-users">
             <h2 style="color: #618578; margin-bottom: 1rem;">Utilisateurs</h2>
@@ -28,11 +28,11 @@
                 <tbody>
                     {% for user in users %}
                     <tr style="border-bottom: 1px solid #e8e0d9;">
-                        <td style="padding: 0.5rem;">{{ user.id }}</td>
-                        <td style="padding: 0.5rem;">{{ user.email }}</td>
-                        <td style="padding: 0.5rem;">{{ user.firstName }} {{ user.lastName }}</td>
-                        <td style="padding: 0.5rem;">{{ user.roles|join(', ') }}</td>
-                        <td style="padding: 0.5rem;">{{ user.createdAt|date('d/m/Y') }}</td>
+                        <td data-label="ID" style="padding: 0.5rem;">{{ user.id }}</td>
+                        <td data-label="Email" style="padding: 0.5rem;">{{ user.email }}</td>
+                        <td data-label="Nom" style="padding: 0.5rem;">{{ user.firstName }} {{ user.lastName }}</td>
+                        <td data-label="Roles" style="padding: 0.5rem;">{{ user.roles|join(', ') }}</td>
+                        <td data-label="Inscrit le" style="padding: 0.5rem;">{{ user.createdAt|date('d/m/Y') }}</td>
                     </tr>
                     {% else %}
                     <tr>
@@ -69,11 +69,11 @@
                     <tbody>
                     {% for appt in upcomingAppointments %}
                         <tr style="border-bottom: 1px solid #e8e0d9;">
-                            <td style="padding: 0.5rem;">{{ appt.getAppointmentDate() ? appt.getAppointmentDate()|date('d/m/Y') : '-' }}</td>
-                            <td style="padding: 0.5rem;">{{ appt.getAppointmentDate() ? appt.getAppointmentDate()|date('H:i') : '-' }}</td>
-                            <td style="padding: 0.5rem;">{{ appt.getUser() ? (appt.getUser().getFirstName() ~ ' ' ~ appt.getUser().getLastName()) : '-' }}</td>
-                            <td style="padding: 0.5rem;">{{ appt.getSession() ? appt.getSession().getName() : '-' }}</td>
-                            <td style="padding: 0.5rem;">À venir</td>
+                            <td data-label="Date" style="padding: 0.5rem;">{{ appt.getAppointmentDate() ? appt.getAppointmentDate()|date('d/m/Y') : '-' }}</td>
+                            <td data-label="Heure" style="padding: 0.5rem;">{{ appt.getAppointmentDate() ? appt.getAppointmentDate()|date('H:i') : '-' }}</td>
+                            <td data-label="Utilisateur" style="padding: 0.5rem;">{{ appt.getUser() ? (appt.getUser().getFirstName() ~ ' ' ~ appt.getUser().getLastName()) : '-' }}</td>
+                            <td data-label="Séance" style="padding: 0.5rem;">{{ appt.getSession() ? appt.getSession().getName() : '-' }}</td>
+                            <td data-label="Statut" style="padding: 0.5rem;">À venir</td>
                         </tr>
                     {% else %}
                         <tr><td colspan="5" style="padding: 0.5rem; text-align: center;">Aucun rendez-vous à venir.</td></tr>

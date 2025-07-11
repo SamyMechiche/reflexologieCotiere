@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AvailabilitySlotsController extends AbstractController
 {
-    #[Route('/availability/slots', name: 'app_availability_slots')]
+    #[Route('/admin/availability/slots', name: 'app_availability_slots')]
     public function index(): Response
     {
         return $this->render('availability_slots/index.html.twig', [

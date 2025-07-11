@@ -25,15 +25,15 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>{{ user.phoneNumber }}</td>
-                <td>{{ user.createdAt ? user.createdAt|date('d/m/Y H:i') : '' }}</td>
-                <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
-                <td>
+                <td data-label="Id">{{ user.id }}</td>
+                <td data-label="Email">{{ user.email }}</td>
+                <td data-label="Roles">{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td data-label="FirstName">{{ user.firstName }}</td>
+                <td data-label="LastName">{{ user.lastName }}</td>
+                <td data-label="PhoneNumber">{{ user.phoneNumber }}</td>
+                <td data-label="Créé le">{{ user.createdAt ? user.createdAt|date('d/m/Y H:i') : '' }}</td>
+                <td data-label="Vérifié">{{ user.isVerified ? 'Oui' : 'Non' }}</td>
+                <td data-label="Actions">
                     <a href="{{ path('app_user_crud_show', {'id': user.id}) }}">Voir</a>
                     <a href="{{ path('app_user_crud_edit', {'id': user.id}) }}">Éditer</a>
                 </td>
