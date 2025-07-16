@@ -16,6 +16,10 @@ class SessionForm extends AbstractType
             ->add('description')
             ->add('duration_minutes')
             ->add('price')
+            ->add('forfait', null, [
+                'required' => false,
+                'label' => 'Forfait (ex: 4 séances pour 145.00€)',
+            ])
         ;
     }
 

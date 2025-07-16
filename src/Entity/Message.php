@@ -25,8 +25,17 @@ class Message
     #[ORM\Column]
     private ?bool $is_read = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $phone = null;
+
     #[ORM\ManyToOne(inversedBy: 'messages')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
     public function getId(): ?int
@@ -79,6 +88,34 @@ class Message
     {
         $this->is_read = $is_read;
 
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+    public function setName(?string $name): static
+    {
+        $this->name = $name;
+        return $this;
+    }
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+    public function setEmail(?string $email): static
+    {
+        $this->email = $email;
+        return $this;
+    }
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+    public function setPhone(?string $phone): static
+    {
+        $this->phone = $phone;
         return $this;
     }
 

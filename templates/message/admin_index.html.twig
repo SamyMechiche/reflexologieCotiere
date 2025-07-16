@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin Messages{% endblock %}
+{% block title %}ReflexologieCôtière | Admin Messages{% endblock %}
 
 {% block body %}
     <div class="admin-crud-header">
@@ -12,8 +12,9 @@
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Utilisateur</th>
+                <th>Nom</th>
                 <th>Email</th>
+                <th>Téléphone</th>
                 <th>Sujet</th>
                 <th>Message</th>
                 <th>Lu</th>
@@ -23,14 +24,29 @@
         {% for msg in messages %}
             <tr>
                 <td>{{ msg.getSentAt() ? msg.getSentAt()|date('d/m/Y H:i') : '-' }}</td>
-                <td>{{ msg.getUser() ? (msg.getUser().getFirstName() ~ ' ' ~ msg.getUser().getLastName()) : '-' }}</td>
-                <td>{{ msg.getUser() ? msg.getUser().getEmail() : '-' }}</td>
-                <td>{{ msg.getSubject() }}</td>
+                <td>
+                    {% if msg.getUser() %}
+                        {{ msg.getUser().getFirstName() ~ ' ' ~ msg.getUser().getLastName() }}
+                    {% elseif msg.getName() %}
+                        {{ msg.getName() }}
+                    {% else %}-{% endif %}
+                </td>
+                <td>
+                    {% if msg.getUser() %}
+                        {{ msg.getUser().getEmail() }}
+                    {% elseif msg.getEmail() %}
+                        {{ msg.getEmail() }}
+                    {% else %}-{% endif %}
+                </td>
+                <td>
+                    {% if msg.getPhone() %}{{ msg.getPhone() }}{% else %}-{% endif %}
+                </td>
+                <td>{{ msg.getSubject() ?: '-' }}</td>
                 <td>{{ msg.getContent() }}</td>
                 <td>{% if msg.isRead() %}Oui{% else %}Non{% endif %}</td>
             </tr>
         {% else %}
-            <tr><td colspan="6">Aucun message reçu.</td></tr>
+            <tr><td colspan="7">Aucun message reçu.</td></tr>
         {% endfor %}
         </tbody>
     </table>

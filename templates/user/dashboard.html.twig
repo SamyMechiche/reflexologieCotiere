@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon Tableau de Bord{% endblock %}
+{% block title %}ReflexologieCôtière | Mon Tableau de Bord{% endblock %}
 
 {% block body %}
 <div class="dashboard-wrapper" style="max-width: 1000px; margin: 2em auto;">
@@ -92,6 +92,13 @@
                 <div>Aucun message.</div>
             {% endfor %}
         </div>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-message flash-{{ label }}" style="margin-bottom:1em; padding:0.7em 1em; border-radius:6px; background:#f7f7e6; color:#47301E; border-left:4px solid {% if label == 'success' %}#4caf50{% else %}#b71c1c{% endif %};">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         <form method="post" action="{{ path('app_message_send') }}" style="margin-top:1em;">
             <input type="text" name="subject" placeholder="Sujet" required style="width:30%; margin-right:1em;">
             <input type="text" name="content" placeholder="Votre message" required style="width:50%; margin-right:1em;">

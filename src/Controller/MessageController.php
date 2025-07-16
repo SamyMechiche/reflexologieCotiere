@@ -30,13 +30,14 @@ final class MessageController extends AbstractController
         $content = $request->request->get('content');
         if ($subject && $content) {
             $msg = new Message();
-            $msg->setUser($user);
+            $msg->setUser($user); // user is always set due to IS_AUTHENTICATED_FULLY
             $msg->setSubject($subject);
             $msg->setContent($content);
             $msg->setSentAt(new \DateTime());
             $msg->setIsRead(false);
             $em->persist($msg);
             $em->flush();
+            $this->addFlash('success', 'Votre message a bien été envoyé.');
         }
         return $this->redirectToRoute('app_user_dashboard');
     }

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réflexologie Côtière{% endblock %}
+{% block title %}ReflexologieCôtière | Accueil{% endblock %}
 
 {% block body %}
     <section class="padding">
@@ -9,7 +9,11 @@
             <h4>Annick Brunel E.I</h4>
             <div class="login-btns-row">
                 {% if app.user %}
-                    <a href="{{ path('app_user_dashboard') }}" class="login-btn">Mon espace</a>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        <a href="{{ path('admin_dashboard') }}" class="login-btn">Espace admin</a>
+                    {% else %}
+                        <a href="{{ path('app_user_dashboard') }}" class="login-btn">Mon espace</a>
+                    {% endif %}
                     <a href="{{ path('app_logout') }}" class="login-btn">Déconnexion</a>
                 {% else %}
                     <a href="{{ path('app_login') }}" class="login-btn">Connexion</a>
@@ -77,7 +81,7 @@
                     <img src="/img/homepage/HPpictures2.png" alt="Séance réflexologie 2">
                 </figure>
                 <figure>
-                    <img src="/img/homepage/HPpictures2.png" alt="Séance réflexologie 2">
+                    <img src="/img/illus_vrac/A - Pratique plantaire - 2025 07 11 - 19.jpg" alt="Séance réflexologie 2">
                 </figure>
             </section>
         </div>

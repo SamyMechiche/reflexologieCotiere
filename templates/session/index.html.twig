@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les séances{% endblock %}
+{% block title %}ReflexologieCôtière | Les séances{% endblock %}
 
 {% block body %}
 
@@ -12,11 +12,11 @@
     </div>
     <div class="banner-slider" style="width:100vw; max-width:100%; overflow:hidden; margin-bottom:2rem; position:relative; left:50%; transform:translateX(-50%);">
         <div class="banner-slides">
-            <img src="/img/illus_vrac/Plantaire - Portrait - 2025 02 23 33 NB.jpg" alt="Entreprise 1" />
-            <img src="/img/illus_vrac/Plantaire - Portrait - 2025 02 23 36 NB.jpg" alt="Entreprise 1" />
-            <img src="/img/illus_vrac/Pratique plantaire 2025 01 20 31 fond flou.jpg" alt="Entreprise 1" />
-            <img src="/img/entreprise/entreprise 1.avif" alt="Entreprise 1" />
-            <img src="/img/entreprise/entreprise 1.avif" alt="Entreprise 1" />
+            <img src="/img/illus_vrac/Plantaire - Portrait - 2025 02 23 33 NB.jpg" alt="Photoeflexo" />
+            <img src="/img/illus_vrac/Plantaire - Portrait - 2025 02 23 36 NB.jpg" alt="Photo reflexo" />
+            <img src="/img/illus_vrac/Pratique plantaire 2025 01 20 31 fond flou.jpg" alt="Photo reflexo" />
+            <img src="/img/illus_vrac/A- Pratique plantaire - 2025 07 11 - 09.jpg" alt="Photo reflexo" />
+            <img src="/img/illus_vrac/A- Pratique plantaire - 2025 07 11 - 09.jpg" alt="Photo reflexo" />
         </div>
     </div>
     <section class="section-block-2">
@@ -25,6 +25,21 @@
 
         <section class="section-block-2">
             <h1>{{ session.getName() }}{% if session.getPrice() %} - {{ session.getPrice()|number_format(2, '.', ' ') }}€{% endif %}</h1>
+            {% if session.getForfait() %}
+<div class="forfait-info" style="
+    background: #f7f7e6;
+    border-left: 4px solid #b5a642;
+    padding: 0.75em 1em;
+    margin-bottom: 1em;
+    font-weight: bold;
+    white-space: pre-line;
+    min-height: 4em;
+    align-items: center;
+">
+    {{ session.getForfait() }}
+</div>
+
+            {% endif %}
             {# Optionally display forfaits or extra info here if you have it in the entity #}
             {#
   SECURITY: The session description is output with |raw. This is safe because only trusted admins can edit session descriptions via the admin interface.
@@ -58,7 +73,12 @@
             {% endif %}
         </section>
     {% endfor %}
-    
+    <div class="gift-card">
+        <a href="/docpdf/gift_card.pdf" target="_blank" style="display:block; text-decoration:none; color:inherit; font-weight:bold; font-size:1.15rem; padding:1.2rem 0;">
+            🎁 Découvrez la carte cadeau réflexologie (cliquez ici)
+        </a>
+    </div>
+
     <section class="session-payment-info">
         <h2 class="session-payment-title">Règlement</h2>
         <ul class="session-payment-list">

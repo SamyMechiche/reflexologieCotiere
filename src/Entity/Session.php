@@ -28,6 +28,9 @@ class Session
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $price = null;
 
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    private ?string $forfait = null;
+
     /**
      * @var Collection<int, Review>
      */
@@ -96,6 +99,17 @@ class Session
     {
         $this->price = $price;
 
+        return $this;
+    }
+
+    public function getForfait(): ?string
+    {
+        return $this->forfait;
+    }
+
+    public function setForfait(?string $forfait): static
+    {
+        $this->forfait = $forfait;
         return $this;
     }
 

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}ReflexologieCôtière | Contact{% endblock %}
 
 {% block body %}
     <section class="padding">
@@ -10,6 +10,13 @@
     </div>
         <section class="section-block form">
             <h1>M'écrire</h1>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash-message flash-{{ label }}" style="margin-bottom:1em; padding:0.7em 1em; border-radius:6px; background:#f7f7e6; color:#47301E; border-left:4px solid {% if label == 'success' %}#4caf50{% else %}#b71c1c{% endif %};">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
             <form action="" method="post">
                 <div class="input">
                     <input type="text" name="name" placeholder="Nom" required>
@@ -19,6 +26,9 @@
                 </div>
                 <div class="input">
                     <input type="tel" name="phone" placeholder="Tel." required>
+                </div>
+                <div class="input">
+                    <input type="text" name="subject" placeholder="Sujet" required>
                 </div>
                 <div class="input">
                     <textarea name="content" placeholder="Votre message" required></textarea>
