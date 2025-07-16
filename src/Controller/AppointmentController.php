@@ -13,12 +13,15 @@ use App\Repository\SessionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mime\Address;
 
 final class AppointmentController extends AbstractController
 {
     // Appointment booking page: Handles both GET (show slots) and POST (book appointment)
     #[Route('/appointment', name: 'app_appointment', methods: ['GET', 'POST'])]
-    public function index(AvailabilitySlotsRepository $slotsRepository, SessionRepository $sessionRepository, Request $request, EntityManagerInterface $em): Response
+    public function index(AvailabilitySlotsRepository $slotsRepository, SessionRepository $sessionRepository, Request $request, EntityManagerInterface $em, MailerInterface $mailer): Response
     {
         $slotId = $request->query->get('slotId');
         // Query all available slots (not booked)
@@ -26,6 +29,9 @@ final class AppointmentController extends AbstractController
         // Query all available session types
         $sessions = $sessionRepository->findAll();
         $success = false;
+        if (!$request->isMethod('POST')) {
+            $success = $request->query->get('success') == 1;
+        }
         $error = null;
 
         if ($request->isMethod('POST')) {
@@ -70,7 +76,20 @@ final class AppointmentController extends AbstractController
                         $slot->setIsBooked(true);
                         $em->persist($appointment);
                         $em->flush();
-                        $success = true;
+
+                        // Send confirmation email
+                        $emailMessage = (new TemplatedEmail())
+                            ->from(new Address('mailer@gmail.com', 'Réflexologie Côtière'))
+                            ->to($user->getEmail())
+                            ->subject('Confirmation de votre rendez-vous')
+                            ->htmlTemplate('appointment/confirmation_email.html.twig')
+                            ->context([
+                                'user' => $user,
+                                'appointment' => $appointment,
+                            ]);
+                        $mailer->send($emailMessage);
+
+                        return $this->redirectToRoute('app_appointment', ['success' => 1]);
                     }
                 }
             }

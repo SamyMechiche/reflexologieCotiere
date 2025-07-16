@@ -7,7 +7,7 @@
 <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
     <h1>Choisissez un créneau disponible</h1>
     {% if success %}
-        <div class="booking-success">Votre rendez-vous a bien été réservé !</div>
+        <div class="booking-success">Votre rendez-vous a bien été réservé ! Un email de confirmation contenant les détails de votre rendez-vous vient de vous être envoyé.</div>
     {% elseif error %}
         <div class="booking-error">{{ error }}</div>
     {% endif %}
@@ -16,11 +16,13 @@
     {% if slotId %}
         <script>window.bookingPreselectedSlotId = {{ slotId|json_encode|raw }};</script>
     {% endif %}
+    {% if not success %}
+    {% set selectedSlot = (slots|filter(s => s.id == slotId)|first) %}
     <div id="booking-form-div" style="display:{{ slotId ? 'block' : 'none' }};" class="booking-form">
         <h2>Réserver ce créneau</h2>
         <div class="booking-form-row">
-            <label>Date :</label> <span id="selected-slot-date">{% if slotId and slots|length %}{{ slots|filter(s => s.id == slotId)|first.date|date('d/m/Y') }}{% endif %}</span>
-            <label>Heure :</label> <span id="selected-slot-time">{% if slotId and slots|length %}{{ slots|filter(s => s.id == slotId)|first.startTime|date('H:i') }} - {{ slots|filter(s => s.id == slotId)|first.endTime|date('H:i') }}{% endif %}</span>
+            <label>Date :</label> <span id="selected-slot-date">{% if selectedSlot is not same as(false) and selectedSlot is defined and selectedSlot.date is defined %}{{ selectedSlot.date|date('d/m/Y') }}{% endif %}</span>
+            <label>Heure :</label> <span id="selected-slot-time">{% if selectedSlot is not same as(false) and selectedSlot is defined and selectedSlot.startTime is defined and selectedSlot.endTime is defined %}{{ selectedSlot.startTime|date('H:i') }} - {{ selectedSlot.endTime|date('H:i') }}{% endif %}</span>
         </div>
         <form method="post" action="{{ path('app_appointment') }}">
             <input type="hidden" name="slotId" id="slotIdInput" value="{{ slotId ?: '' }}">
@@ -44,6 +46,7 @@
             </div>
         </form>
     </div>
+    {% endif %}
     <div class="booking-calendar-hint">Cliquez sur un créneau dans le calendrier pour réserver.</div>
 </div>
 {% endblock %}

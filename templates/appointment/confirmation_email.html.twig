@@ -1,0 +1,17 @@
+<h1 style="color:#618578;">Votre rendez-vous est confirmé !</h1>
+
+<p>Bonjour {{ user.firstName }},</p>
+
+<p>Merci d'avoir pris rendez-vous avec Réflexologie Côtière. Nous avons bien enregistré votre demande et avons hâte de vous accueillir !</p>
+
+<h2 style="color:#618578;">Détails de votre rendez-vous :</h2>
+<ul style="font-size:1.1em;">
+    <li><strong>Date :</strong> {{ appointment.appointmentDate|date('l d F Y') }}</li>
+    <li><strong>Heure :</strong> {{ appointment.appointmentDate|date('H:i') }}</li>
+    <li><strong>Séance :</strong> {{ appointment.session.name }}</li>
+    <li><strong>Informations complémentaires :</strong> {{ appointment.healthInformations ?: 'Aucune' }}</li>
+</ul>
+
+<p style="margin-top:2em;">Si vous avez la moindre question ou souhaitez modifier votre rendez-vous, il vous suffit de répondre à ce mail, nous sommes là pour vous aider !</p>
+
+<p>À très bientôt,<br>L'équipe Réflexologie Côtière</p> 
