@@ -86,20 +86,24 @@
         </section>
         <section class="section-block map" style="margin-top:32px;">
             <h1>Localisation</h1>
-            <div id="map" style="height: 300px; width: 100%;">
-            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-            <script>
-                // Coordonnées approximatives de l'adresse
-                var map = L.map('map').setView([45.8339, 4.9997], 16);
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap contributors'
-                }).addTo(map);
-                L.marker([45.8339, 4.9997]).addTo(map)
-                    .bindPopup('266 chemin du Pont - 01700 Beynost')
-                    .openPopup();
-            </script>
-            </div>
+            <div id="map" style="height: 300px; width: 100%;"></div>
         </section>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var map = L.map('map').setView([45.8339, 4.9997], 16);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            L.marker([45.8339, 4.9997]).addTo(map)
+                .bindPopup('266 chemin du Pont - 01700 Beynost')
+                .openPopup();
+        });
+    </script>
 {% endblock %}

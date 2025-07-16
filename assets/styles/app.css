@@ -2582,3 +2582,18 @@ button[type="submit"]:hover {
   .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: flex-start; }
   .dashboard-users, .dashboard-controls { width: 100%; min-width: 0; }
 }
+
+/* FullCalendar custom styles */
+.fc-daygrid-event-dot {
+  border: calc(var(--fc-daygrid-event-dot-width) / 2) solid #618578;
+}
+.fc-event-time,
+.fc-event-title {
+    color: #47301E;
+}
+.fc-scrollgrid-sync-inner > a {
+color: #0D1C17;
+}
+.fc-daygrid-day-top > a{
+  color: #0D1C17;
+}
