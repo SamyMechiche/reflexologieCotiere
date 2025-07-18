@@ -21,20 +21,23 @@ class Invoice
     private ?User $user = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Appointment $appointment = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $ammount = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $status = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTime $issued_at = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTime $paid_at = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $pdfFilename = null;
 
     /**
      * @var Collection<int, Payment>
@@ -121,6 +124,17 @@ class Invoice
     {
         $this->paid_at = $paid_at;
 
+        return $this;
+    }
+
+    public function getPdfFilename(): ?string
+    {
+        return $this->pdfFilename;
+    }
+
+    public function setPdfFilename(?string $pdfFilename): static
+    {
+        $this->pdfFilename = $pdfFilename;
         return $this;
     }
 

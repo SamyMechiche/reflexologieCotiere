@@ -57,7 +57,6 @@
                 <tr>
                     <th>Date</th>
                     <th>Séance</th>
-                    <th>Facture</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,8 +66,8 @@
                     <td>{{ appt.session ? appt.session.name : 'Séance' }}</td>
                     <td>
                         {% set invoice = invoices|filter(i => i.appointment.id == appt.id)|first %}
-                        {% if invoice %}
-                            <a href="/docpdf/{{ invoice.id }}.pdf" download>📄 Télécharger</a>
+                        {% if invoice and invoice.pdfFilename %}
+                            <a href="/invoices/{{ invoice.pdfFilename }}" download>📄 Télécharger</a>
                         {% else %}
                             -
                         {% endif %}
@@ -168,6 +167,25 @@
                 <div style="color:#888; font-style:italic;">Aucun avis trouvé pour ces critères.</div>
             {% endif %}
         </div>
+    </section>
+    <section>
+        <h2>Mes factures PDF</h2>
+        <ul>
+            {% set hasInvoice = false %}
+            {% for invoice in invoices %}
+                {% if invoice.pdfFilename %}
+                    {% set hasInvoice = true %}
+                    <li>
+                        <a href="/invoices/{{ invoice.pdfFilename }}" class="black" download>
+                            📄 {{ invoice.pdfFilename }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            {% if not hasInvoice %}
+                <li>Aucune facture PDF disponible.</li>
+            {% endif %}
+        </ul>
     </section>
 </div>
 {% endblock %} 

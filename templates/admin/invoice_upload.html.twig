@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Upload Invoice PDF{% endblock %}
+
+{% block body %}
+    <h1>Upload Invoice PDF</h1>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="user_id" class="form-label">Select User</label>
+            <select name="user_id" id="user_id" class="form-select" required>
+                <option value="">-- Choose a user --</option>
+                {% for user in users %}
+                    <option value="{{ user.id }}">{{ user.email }} ({{ user.firstName ~ ' ' ~ user.lastName }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="pdf_file" class="form-label">Invoice PDF</label>
+            <input type="file" name="pdf_file" id="pdf_file" class="form-control" accept="application/pdf" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+{% endblock %} 
