@@ -653,12 +653,12 @@ footer > p { text-align: center; color: #0D1C17; }
 .flex { display: flex; flex-direction: column; gap: 2rem; }
 .green { background-color: #D8E8CE; }
 .orange { background-color: #FFEEE0; }
-.bois {color: #59882A;}
-.terre {color: #C79E16;}
-.eau {color: #081C6A;}
-.metal {color: #808080;}
-.feu {color: #D16363;}
-.black {color: #0D1C17;}
+.bois { color: #59882A; }
+.terre { color: #C79E16; }
+.eau { color: #081C6A; }
+.metal { color: #808080; }
+.feu { color: #D16363; }
+.black { color: #0D1C17; }
 
 /* =======================
    10. MEDIA QUERIES
@@ -2597,4 +2597,100 @@ color: #0D1C17;
 }
 .fc-daygrid-day-top > a{
   color: #0D1C17;
+}
+
+/* Dashboard section styles */
+.dashboard-section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 2em;
+    margin-bottom: 2em;
+}
+.dashboard-section h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #2c3e50;
+}
+.dashboard-section ul,
+.dashboard-section table {
+    margin-bottom: 0;
+}
+
+/* Admin messages page styles */
+.admin-crud-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2em;
+}
+.dashboard-back-btn {
+    background: #f5f5f5;
+    color: #2c3e50;
+    padding: 0.5em 1.2em;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.dashboard-back-btn:hover {
+    background: #e0e0e0;
+    color: #1a242f;
+}
+.example-wrapper {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 2em;
+    margin-bottom: 2em;
+}
+.example-wrapper h1 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1.5em;
+}
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fafbfc;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    overflow: hidden;
+}
+.table thead tr {
+    background: #f0f4f8;
+}
+.table th, .table td {
+    padding: 0.9em 1em;
+    text-align: left;
+    font-size: 1em;
+}
+.table th {
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #e0e0e0;
+}
+.table tbody tr {
+    background: #fff;
+    transition: background 0.2s;
+}
+.table tbody tr:nth-child(even) {
+    background: #f7fafd;
+}
+.table tbody tr:hover {
+    background: #e6f0fa;
+}
+.table td {
+    color: #333;
+    vertical-align: top;
+}
+
+.latest-message {
+    background: #fffbe6;
+    border-left: 4px solid #f5b301;
 }

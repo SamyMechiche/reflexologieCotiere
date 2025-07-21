@@ -1,23 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ReflexologieCôtière | Messages{% endblock %}
+{% block title %}ReflexologieCôtière | Message{% endblock %}
 
 {% block body %}
     <div class="admin-crud-header">
-        <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
+        <a href="{{ path('admin_messages') }}" class="dashboard-back-btn">← Retour à la liste des messages</a>
     </div>
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/wamp64/www/reflexologieCotiere/src/Controller/MessageController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/reflexologieCotiere/templates/message/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="example-wrapper" style="max-width: 700px; margin: 2em auto;">
+        {% if message is defined %}
+            <h1>Détail du message</h1>
+            <div style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07); padding:2em;">
+                <p class="black"><strong>Date :</strong> {{ message.getSentAt() ? message.getSentAt()|date('d/m/Y H:i') : '-' }}</p>
+                <p class="black"><strong>Nom :</strong> {% if message.getUser() %}{{ message.getUser().getFirstName() ~ ' ' ~ message.getUser().getLastName() }}{% elseif message.getName() %}{{ message.getName() }}{% else %}-{% endif %}</p>
+                <p class="black"><strong>Email :</strong> {% if message.getUser() %}{{ message.getUser().getEmail() }}{% elseif message.getEmail() %}{{ message.getEmail() }}{% else %}-{% endif %}</p>
+                <p class="black"><strong>Téléphone :</strong> {{ message.getPhone() ?: '-' }}</p>
+                <p class="black"><strong>Sujet :</strong> {{ message.getSubject() ?: '-' }}</p>
+                <p class="black"><strong>Message :</strong><br>{{ message.getContent() }}</p>
+                <p class="black"><strong>Lu :</strong> {% if message.isRead() %}Oui{% else %}Non{% endif %}</p>
+            </div>
+        {% else %}
+            <h2>Aucun message à afficher.</h2>
+        {% endif %}
+    </div>
 {% endblock %}

@@ -6,8 +6,28 @@
     <div class="admin-crud-header">
         <a href="{{ path('admin_dashboard') }}" class="dashboard-back-btn">← Retour au tableau de bord</a>
     </div>
-<div class="example-wrapper" style="max-width: 900px; margin: 2em auto;">
-    <h1>Messages des utilisateurs</h1>
+    <div class="example-wrapper" style="max-width: 1200px; margin: 2em auto;">
+        <h1>Messages des utilisateurs</h1>
+        <form method="post" action="{{ path('admin_message_send') }}" style="margin-bottom:2em; display:flex; gap:1em; align-items:flex-end; flex-wrap:wrap;">
+            <div>
+                <label for="user_id">Utilisateur</label><br>
+                <select name="user_id" id="user_id" required style="width: 220px;">
+                    <option value="">-- Choisir un utilisateur --</option>
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.firstName ~ ' ' ~ user.lastName }} ({{ user.email }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="subject">Sujet</label><br>
+                <input type="text" name="subject" id="subject" required style="width: 180px;">
+            </div>
+            <div>
+                <label for="content">Message</label><br>
+                <input type="text" name="content" id="content" required style="width: 300px;">
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
     <table class="table" style="width:100%; background:#fff; border-radius:8px;">
         <thead>
             <tr>
@@ -18,11 +38,13 @@
                 <th>Sujet</th>
                 <th>Message</th>
                 <th>Lu</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
+        {% set latest_id = messages|first ? messages|first.id : null %}
         {% for msg in messages %}
-            <tr>
+            <tr{% if msg.id == latest_id %} class="latest-message"{% endif %}>
                 <td>{{ msg.getSentAt() ? msg.getSentAt()|date('d/m/Y H:i') : '-' }}</td>
                 <td>
                     {% if msg.getUser() %}
@@ -44,6 +66,7 @@
                 <td>{{ msg.getSubject() ?: '-' }}</td>
                 <td>{{ msg.getContent() }}</td>
                 <td>{% if msg.isRead() %}Oui{% else %}Non{% endif %}</td>
+                <td><a href="{{ path('admin_message_show', {'id': msg.id}) }}" class="btn btn-sm btn-primary">Voir</a></td>
             </tr>
         {% else %}
             <tr><td colspan="7">Aucun message reçu.</td></tr>

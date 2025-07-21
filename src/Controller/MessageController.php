@@ -47,8 +47,47 @@ final class MessageController extends AbstractController
     public function adminIndex(EntityManagerInterface $em): Response
     {
         $messages = $em->getRepository(Message::class)->findBy([], ['sent_at' => 'DESC']);
+        $users = $em->getRepository(\App\Entity\User::class)->findBy([], ['lastName' => 'ASC', 'firstName' => 'ASC']);
         return $this->render('message/admin_index.html.twig', [
             'messages' => $messages,
+            'users' => $users,
+        ]);
+    }
+
+    #[Route('/admin/message/send', name: 'admin_message_send', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
+    public function adminSend(Request $request, EntityManagerInterface $em): RedirectResponse
+    {
+        $userId = $request->request->get('user_id');
+        $subject = $request->request->get('subject');
+        $content = $request->request->get('content');
+        $user = $em->getRepository(\App\Entity\User::class)->find($userId);
+        if ($user && $subject && $content) {
+            $msg = new Message();
+            $msg->setUser($user);
+            $msg->setSubject($subject);
+            $msg->setContent($content);
+            $msg->setSentAt(new \DateTime());
+            $msg->setIsRead(false);
+            $em->persist($msg);
+            $em->flush();
+            $this->addFlash('success', 'Message envoyé à l\'utilisateur.');
+        } else {
+            $this->addFlash('danger', 'Utilisateur non trouvé ou champs manquants.');
+        }
+        return $this->redirectToRoute('admin_messages');
+    }
+
+    #[Route('/admin/message/{id}', name: 'admin_message_show', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+    public function adminShow(int $id, EntityManagerInterface $em): Response
+    {
+        $message = $em->getRepository(Message::class)->find($id);
+        if (!$message) {
+            throw $this->createNotFoundException('Message non trouvé.');
+        }
+        return $this->render('message/index.html.twig', [
+            'message' => $message,
         ]);
     }
 }
