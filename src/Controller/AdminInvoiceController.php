@@ -32,7 +32,7 @@ class AdminInvoiceController extends AbstractController
             if ($userId && $pdfFile && $pdfFile->getClientOriginalExtension() === 'pdf') {
                 $user = $userRepository->find($userId);
                 if ($user) {
-                    $filename = uniqid('invoice_') . '.' . $pdfFile->getClientOriginalExtension();
+                    $filename = uniqid('facture_') . '.' . $pdfFile->getClientOriginalExtension();
                     $pdfFile->move($this->getParameter('kernel.project_dir') . '/public/invoices', $filename);
 
                     $invoice = new Invoice();
@@ -42,12 +42,12 @@ class AdminInvoiceController extends AbstractController
                     $em->persist($invoice);
                     $em->flush();
 
-                    $success = 'Invoice uploaded and linked to user.';
+                    $success = 'Facture générée et associée à l\'utilisateur.';
                 } else {
-                    $error = 'User not found.';
+                    $error = 'Utilisateur introuvable.';
                 }
             } else {
-                $error = 'Please select a user and upload a valid PDF file.';
+                $error = 'Veuillez séléctionner un utilisateur et un fichier valide.';
             }
         }
 
