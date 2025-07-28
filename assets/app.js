@@ -251,3 +251,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var emailSpan = document.getElementById('email-to-copy');
+    if (!emailSpan) return;
+
+    function showCopiedMessage() {
+        // Create the message element
+        var msg = document.createElement('div');
+        msg.textContent = "Adresse email copiée !";
+        msg.style.position = 'absolute';
+        msg.style.background = '#f7f7e6';
+        msg.style.color = '#47301E';
+        msg.style.border = '1px solid #4caf50';
+        msg.style.borderRadius = '6px';
+        msg.style.padding = '0.5em 1em';
+        msg.style.fontSize = '0.95em';
+        msg.style.boxShadow = '0 2px 8px rgba(0,0,0,0.07)';
+        msg.style.zIndex = 1000;
+        msg.style.transition = 'opacity 0.3s';
+        msg.style.opacity = '1';
+
+        // Position the message just below the email span
+        var rect = emailSpan.getBoundingClientRect();
+        msg.style.left = (rect.left + window.scrollX) + 'px';
+        msg.style.top = (rect.bottom + window.scrollY + 6) + 'px';
+
+        document.body.appendChild(msg);
+
+        setTimeout(function() {
+            msg.style.opacity = '0';
+            setTimeout(function() {
+                if (msg.parentNode) msg.parentNode.removeChild(msg);
+            }, 300);
+        }, 1200);
+    }
+
+    emailSpan.addEventListener('click', function() {
+        var email = emailSpan.textContent;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(email).then(function() {
+                showCopiedMessage();
+            });
+        } else {
+            // fallback for older browsers
+            var textarea = document.createElement('textarea');
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showCopiedMessage();
+        }
+    });
+});
