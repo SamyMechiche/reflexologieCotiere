@@ -7,7 +7,7 @@
 <a href="{{ path('app_home') }}" class="arrow">&#10229;</a>
     <h1>Choisissez un créneau disponible</h1>
     {% if success %}
-        <div class="booking-success">Votre rendez-vous a bien été réservé ! Un email de confirmation contenant les détails de votre rendez-vous vient de vous être envoyé.</div>
+        <div class="booking-success">Votre rendez-vous a bien été réservé ! Vous retrouverez ce rendez-vous ainsi que les détails sur votre espace.</div>
     {% elseif error %}
         <div class="booking-error">{{ error }}</div>
     {% endif %}

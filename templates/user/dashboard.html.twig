@@ -69,7 +69,7 @@
                     <td>{{ appt.appointmentDate|date('d/m/Y H:i') }}</td>
                     <td>{{ appt.session ? appt.session.name : 'Séance' }}</td>
                     <td>
-                        {% set invoice = invoices|filter(i => i.appointment.id == appt.id)|first %}
+                        {% set invoice = invoices|filter(i => i.appointment and i.appointment.id == appt.id)|first %}
                         {% if invoice and invoice.pdfFilename %}
                             <a href="/invoices/{{ invoice.pdfFilename }}" download>📄 Télécharger</a>
                         {% else %}
